@@ -1,0 +1,366 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+    text-align: center;
+    font-family: 'Gowun Batang', serif;
+    background-color: #C8C6C6;
+    color: #F7F6F2;
+    font-family: 'Merriweather', serif;
+    height: 100%;
+    position: relative;
+  }
+  
+  h1 {
+    font-size: 4rem;
+    color: #091353;
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+  }
+  
+  p {
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    color: #091353;
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+  }
+
+  .content {  
+    min-height: 100vh;
+    position: relative;
+    display: block;
+    padding-bottom: 10rem;
+  }
+  
+  /* a {
+    color: #F0E5CF;
+  } */
+  
+  h3 {
+    font-size: 2rem;
+    color: #091353;
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+  }
+  
+  hr {
+    border-style: solid none none none;
+    border-width: 5px;
+    width: 70%;
+    border-radius: 5px;
+    border-color: #091353;
+    background-color: transparent;
+    margin: auto;
+    opacity: 1;
+  }
+
+  nav {
+    background-color: #091353;
+    font-size: 1.25rem;
+  }
+  
+  nav a  {
+    color: #F0E5CF;
+  }
+  
+  .navbar a {
+    color: #F0E5CF;
+  }
+  
+  .navbar a:hover {
+    color: #C8C6C6;
+  }
+
+  .main-logo {
+        float: left;
+        margin-left: 30px;
+        font-size: 20px;
+  }
+
+    .top-margin {
+        margin-bottom: 30px;
+      }
+
+    .cart {
+        float: right;
+        font-size: 20px;
+        color: white;
+        position: absolute;
+    }
+    .underlineEffects a {
+        color: #F0E5CF;
+        position: relative;
+      }
+      
+    .underlineEffects .active {
+        color: #F0E5CF;
+    }
+      
+    .underlineEffects a:after {
+        background: none repeat scroll 0 0 transparent;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        background: #F0E5CF;
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0;
+    }
+      
+    .underlineEffects a:hover:after {
+        width: 100%;
+        left: 0;
+    }
+
+    .middle {
+        float: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .right {
+          float: right;
+          margin-right: 15px;
+      }
+
+
+
+
+      /**** Home Page ****/
+      .btn-container {
+        width: 100%;
+        margin: auto;
+        padding-top: 60px;
+        opacity: 0;
+        animation-fill-mode: forwards;
+        animation-name: fadeIn;
+        animation-delay: 3s;
+        animation-duration: 1s;
+        display: block;
+      }
+
+      .top-hr {
+        margin-top: 40px;
+        opacity: 0;
+        animation-fill-mode: forwards;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+        animation-delay: 3s;
+        width: 90%;
+      }
+
+
+      .bottom-container {
+        background-color: #091353;
+        margin: auto;
+        width: 100%;
+        bottom: 0;
+        position: absolute;
+        height: 10rem;
+      }
+
+      
+      .footer-link {
+        display: inline-block;
+        position: relative;
+        padding: 20px;
+        color: #F0E5CF;
+        text-decoration: none;
+      }
+      
+      .footer-link:hover {
+        color: #F0E5CF;
+      }
+      
+      .footer-link:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #F0E5CF;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      
+      .footer-link:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+      
+      .links-home {
+        margin: 20px;
+      }
+
+      .img-div {
+        margin: 20px;
+
+      }
+
+      .btn {
+        font-weight: bold;
+        border-radius: 8px;
+        background-color: #F0E5CF;
+        color: #091353;
+        box-shadow: 2px 2px 12px 1px rgba(0, 0, 0, .2);
+        margin: 20px;
+      }
+
+      .btn:hover {
+          background-color: #C8C6C6;
+          color: #F7F6F2;
+      }
+
+      .shop-img {
+          width: 100%;
+          height: auto;
+      }
+
+      .shoe-title {
+          font-size: 1rem;
+      }
+
+      .middle-container {
+          width: 90%;
+          margin: auto;
+          opacity: 0;
+          animation-fill-mode: forwards;
+          animation-name: fadeIn;
+          animation-delay: 3s;
+          animation-duration: 1s;
+      }
+
+      .imgDiv {
+          padding-top: 30px;
+          display: none;
+      }
+
+      .title-container {
+          padding-top: 30px;
+      }
+
+      .title {
+        margin: auto;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+        display: inline;
+        padding: 10px;
+      }
+
+      .subtitle {
+        display: inline;
+        opacity: 0;
+        animation-fill-mode: forwards;
+        margin: auto;
+        animation-name: fadeIn;
+        animation-delay: 1s;
+        animation-duration: 1s;
+        padding: 10px;
+      }
+
+      .subtitle2 {
+        display: inline;
+        opacity: 0;
+        animation-fill-mode: forwards;
+        margin: auto;
+        animation-name: fadeIn;
+        animation-delay: 2s;
+        animation-duration: 1s;
+        padding: 10px;
+      }
+
+      @keyframes fadeIn {
+        0% {opacity: 0;}
+        25% {opacity: .25;}
+        50% {opacity: .5;}
+        75% {opacity: .75;}
+        100% {opacity: 1;}
+      }
+
+      .show {
+          display: block;
+      }
+
+      .active {
+          background-color: #4B6587;
+          color: #F7F6F2;
+      }
+
+      .image-container {
+        position: relative;
+      }
+
+
+      .image-container .middle-images {
+        transition: 0.5 ease;
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        color: white;
+        background-color: #091353;
+        font-size: .6rem;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        opacity: 0;
+        text-align: center;
+      }
+
+      .image-container .middle-text {
+        transition: 0.5 ease;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        color: #F7F6F2;
+        background-color: #091353;
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+        opacity: 0;
+        border-radius: 5px;
+      }
+
+      .image-container:hover .shop-pics {
+        opacity: 0.3;
+      }
+      
+      .image-container:hover .middle-images {
+        animation-name: fadeIn;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+      }
+      .image-container:hover .middle-text {
+        animation-name: fadeIn;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes fadeIn {
+        0% {opacity: 0;}
+        25% {opacity: .25;}
+        50% {opacity: .5;}
+        75% {opacity: .75;}
+        100% {opacity: 1;}
+      }
+
+      .side-nav {
+        height: 100%; 
+        width: 15%; 
+        position: absolute;
+        background-color: #091353;
+      }
