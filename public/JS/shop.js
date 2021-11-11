@@ -40,3 +40,15 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+
+var dropdownButton = document.getElementById("ddBtn");
+dropdownButton.addEventListener("click", function() {
+  var list = this.nextElementSibling;
+  if(list.style.display == "block") {
+    list.style.display = "none";
+  } else {
+    list.style.display = "block";
+  }
+  list.className.split(" ");
+  list.className += "animate";
+}) 

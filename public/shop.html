@@ -54,14 +54,17 @@
         <div class="row" style="display: block;">
           <div class="side-nav">
             <div id="btnContainer" class="btn-container">
-              <button class="btn active" onclick="filterSelection('all')">Show All</button>
-              <button class="btn" onclick="filterSelection('jordan')">Jordan</button>
-              <button class="btn" onclick="filterSelection('nike')">Nike</button>
-              <button class="btn" onclick="filterSelection('newbalance')">New Balance</button>
-              <button class="btn" onclick="filterSelection('sacai')">Sacai</button>
-              <button class="btn" onclick="filterSelection('socialstatus')">Social Status</button>
-              <button class="btn" onclick="filterSelection('airforce')">Air Force 1</button>
-              <button class="btn" onclick="filterSelection('yeezy')">Yeezy</button>
+              <button id="ddBtn" class="dropdown-btn">Styles <i class="fas fa-caret-down"></i></button>
+              <div class="dropdown-container">
+                <button class="btn active" onclick="filterSelection('all')">Show All</button>
+                <button class="btn" onclick="filterSelection('jordan')">Jordan</button>
+                <button class="btn" onclick="filterSelection('nike')">Nike</button>
+                <button class="btn" onclick="filterSelection('newbalance')">New Balance</button>
+                <button class="btn" onclick="filterSelection('sacai')">Sacai</button>
+                <button class="btn" onclick="filterSelection('socialstatus')">Social Status</button>
+                <button class="btn" onclick="filterSelection('airforce')">Air Force 1</button>
+                <button class="btn" onclick="filterSelection('yeezy')">Yeezy</button>
+              </div>
             </div>
           </div>
           <div class="title-container" style="width: 85%; margin-left: 15%;">

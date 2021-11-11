@@ -208,17 +208,22 @@ body {
       }
 
       .btn {
-        font-weight: bold;
-        border-radius: 8px;
-        background-color: #F0E5CF;
-        color: #091353;
-        box-shadow: 2px 2px 12px 1px rgba(0, 0, 0, .2);
-        margin: 20px;
+        width: 100%;
+        margin: 0;
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #F0E5CF;
+        display: block;
+        border: none;
+        background: none;
+        cursor: pointer;
+        outline: none;
       }
 
       .btn:hover {
-          background-color: #C8C6C6;
           color: #F7F6F2;
+          font-weight: bold;
       }
 
       .shop-img {
@@ -292,8 +297,8 @@ body {
       }
 
       .active {
-          background-color: #4B6587;
           color: #F7F6F2;
+          font-weight: bold;
       }
 
       .image-container {
@@ -363,4 +368,37 @@ body {
         width: 15%; 
         position: absolute;
         background-color: #091353;
+      }
+
+      
+      .dropdown-container {
+        display: none;
+      }
+
+      .dropdown-btn {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #F0E5CF;
+        display: block;
+        border: none;
+        background: none;
+        width: 100%;
+        cursor: pointer;
+        outline: none;
+      }
+
+      .dropdown-btn:hover {
+        color: white;
+        font-weight: bold;
+      }
+
+      .animate {
+        animation-name: "ddList";
+        animation-duration: 2s;
+
+      }
+
+      @keyframes ddList {
+        from {height: 0;} to {height: 100%;}
       }
