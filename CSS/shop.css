@@ -233,6 +233,7 @@ body {
 
       .shoe-title {
           font-size: 1rem;
+          padding-top: 30px;
       }
 
       .middle-container {
@@ -309,7 +310,7 @@ body {
       .image-container .middle-images {
         transition: 0.5 ease;
         position: absolute;
-        top: 70%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
@@ -327,7 +328,7 @@ body {
       .image-container .middle-text {
         transition: 0.5 ease;
         position: absolute;
-        top: 45%;
+        top: 30%;
         left: 50%;
         transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
