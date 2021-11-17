@@ -229,10 +229,14 @@ body {
       .shop-img {
           width: 100%;
           height: auto;
+          padding-top: 30px;
       }
 
       .shoe-title {
-          font-size: 1rem;
+          font-size: 100%;
+          padding-top: 30px;
+          display: inline-block;
+          width: 100%;
       }
 
       .middle-container {
@@ -309,7 +313,7 @@ body {
       .image-container .middle-images {
         transition: 0.5 ease;
         position: absolute;
-        top: 70%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
@@ -327,7 +331,7 @@ body {
       .image-container .middle-text {
         transition: 0.5 ease;
         position: absolute;
-        top: 45%;
+        top: 30%;
         left: 50%;
         transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
@@ -365,7 +369,14 @@ body {
 
       .side-nav {
         height: 100%; 
-        width: 15%; 
+        width: 10%; 
+        position: absolute;
+        background-color: #091353;
+      }
+
+      .side-nav-2 {
+        height: 100%; 
+        width: 20%; 
         position: absolute;
         background-color: #091353;
       }
@@ -401,4 +412,50 @@ body {
 
       @keyframes ddList {
         from {height: 0;} to {height: 100%;}
+      }
+
+      .cart-btn {
+        color: white;
+        background-color: #091353;
+        font-size: .8rem;
+        padding: 4px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        width: 50%;
+        float: left;
+        margin-top: 15px;
+      }
+
+      .quantity {
+        width: 50%;
+        margin: auto;
+      }
+
+      .remove-btn {
+        background-color: transparent;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 6px;
+        margin-top: 10px;
+      }
+
+      .remove-btn:hover {
+        background-color: #BD2000;
+      }
+
+      .cart-title {
+        font-size: .8rem;
+        margin-top: 10px;
+      }
+
+      .total {
+        display: inline;
+        margin-top: 20px;
+      }
+
+      .item-container {
+        width: 100%;
       }
