@@ -1,8 +1,40 @@
 //Use to load certain buttons/functionalities while page is still loading
 if(document.readyState == 'loading') {
+  hideCart()
   document.addEventListener('DOMContentLoaded', ready)
 } else {
+  hideCart()
   ready()
+}
+var cartCount = 0
+
+var closeButton = document.getElementById('close-btn')
+closeButton.addEventListener('click', function() {
+  hideCart()
+})
+
+var cartButton = document.getElementById('cart-icon-btn')
+cartButton.addEventListener('click', function() {
+  showCart()
+})
+
+function hideCart() {
+  var cartContainer = document.getElementById('cart')
+  cartContainer.style.display = 'none'
+  var shoeContainer = document.getElementById('shoes')
+  shoeContainer.style.width = '90%'
+  getHeight()
+  getHeightPicture()
+}
+
+function showCart() {
+  var cartContainer = document.getElementById('cart')
+  cartContainer.style.display = 'block'
+  cartContainer.style.animationName = 'slideOut';
+  var shoeContainer = document.getElementById('shoes')
+  shoeContainer.style.width = '70%'
+  getHeight()
+  getHeightPicture()
 }
 
 function ready() {
@@ -12,11 +44,22 @@ function ready() {
     var button = removeBtns[i]
     button.addEventListener("click", removeCartItem)
   }
+
+}
+
+function checkCartItems() {
+  var cartItems = document.getElementsByClassName('cart-items')
+  if(cartItems.length == 0) {
+    hideCart()
+  }
 }
 
 function removeCartItem(event) {
   var buttonClicked = event.target
   buttonClicked.parentElement.parentElement.remove();
+  var btnText = document.getElementById('cart-icon-btn').innerText
+  btnText.replace(cartCount, cartCount - 1)
+  cartCount--
   updateCartTotal();
 }
 
@@ -32,7 +75,13 @@ for(var i = 0; i < cartButtons.length; i++) {
     var price = shopPrice.getElementsByClassName("shop-price")[0].innerText
     var imgSrc = shopItem.getElementsByClassName("shop-img")[0].src
     console.log(title + " " + price)
+    showCart()
     addItemToCart(title, price)
+    cartCount++
+    var btnText = document.getElementById('cart-icon-btn')
+    var targetValue = cartCount - 1
+    console.log(targetValue.toString())
+    btnText.innerText.replace(targetValue.toString(), cartCount.toString())
     updateCartTotal()
     ready()
   })
@@ -51,20 +100,23 @@ function addItemToCart(title, price) {
   }
   var cartRowContents = `
   <div class="item-container row">
-    <div class="col-md-5">
+    <div class="col-lg-5">
       <p class="cart-title">${title}</p>
     </div>
-    <div class="col-md-3">
+    <div class="col-lg-3">
       <p class="cart-title price">${price}</p>
     </div>
-    <div class="col-md-4">
+    <div class="col-lg-4">
       <button class="remove-btn" style="height: auto; width: 100%; font-size: .6rem; text-align: center;">Remove</button>
     </div>
+    <hr style="border-color: white; width: 95%;"/>
   </div>
+  
   `
   cartRow.innerHTML = cartRowContents
   cartItems.append(cartRow)
 }
+
 function addToCart(event) {
   var button = event.target
   var shopItem = button.parentElement.parentElement
@@ -85,6 +137,9 @@ function updateCartTotal() {
   }
   var totalAmount = document.getElementById("total");
   totalAmount.innerText = "$" + total.toString();
+  if(total == 0) {
+    hideCart()
+  }
 }
 
 filterSelection("all")

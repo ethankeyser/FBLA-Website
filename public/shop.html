@@ -46,12 +46,13 @@
             </ul>
             
           </div>
-          <a href="index.html" class="navbar-brand brand-name">1202 DLRWRKNS</a>
+            <button id="cart-icon-btn">Cart(0) <i class="fas fa-shopping-cart"></i></button>
+            <!-- <a href="index.html" class="navbar-brand brand-name">1202 DLRWRKNS</a> -->
           </div>
         </nav>
         
         <div class="content">
-        <div class="row" style="display: inline-block;">
+        <div class="row" style="display: block;">
           <div class="side-nav">
             <div id="btnContainer" class="btn-container">
               <button id="ddBtn" class="dropdown-btn">Styles <i class="fas fa-caret-down"></i></button>
@@ -68,18 +69,21 @@
             </div>
           </div>
 
-          <div class="side-nav-2" style="right: 0;">
+          <div class="side-nav-2" id="cart" style="right: 0;">
             <div id="cartContainer" class="row cart-container">
+              <div style="width: 100%; display: block; padding-bottom: 10px;">
+                <button id="close-btn"><i class="far fa-times-circle"></i></button>
+              </div>
               <div class="cart-title-container row">
-                <div class="col-md-5">
+                <div class="col-lg-5">
                   <h3 style="font-size: 1rem; color: white;">Item</h3>
                   <hr style="border-color: white;">
                 </div>
-                <div class="col-md-3">
+                <div class="col-lg-3">
                   <h3 style="font-size: 1rem; color: white;">Price</h3>
                   <hr style="border-color: white;">
                 </div>
-                <div class="col-md-4">
+                <div class="col-lg-4">
                   <h3 style="font-size: 1rem; color: white;">Remove</h3>
                   <hr style="border-color: white;">
                 </div>
@@ -89,7 +93,6 @@
               </div>
 
               <div class="total">
-                <hr style="border-color: white; width: 95%;">
                 <p class="cart-title" id="total" style="float: right;"></p>
                 <h3 class="cart-title" style="color: white; float: right; padding-right: 10px;">Total</h3>
               </div>
@@ -100,7 +103,7 @@
             <h2 class="subtitle">Your</h2>
             <h2 class="subtitle2">Pair</h2>
           </div>
-          <div class="middle-container row" style="width: 70%; margin-left: 10%; margin-right: 20%;">
+          <div class="middle-container row" id="shoes" style="width: 70%; margin-left: 10%; margin-right: 20%;">
             <hr class="top-hr">
            
            <div class="col-lg-2 imgDiv nike jordan image-container">
@@ -207,6 +210,38 @@
                   <button class="cart-btn" id="AJ4TY">Add to Cart</button>
                   <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$299.99</p>
                 </div>
+            </div>
+            <div class="col-lg-2 imgDiv nike jordan image-container">
+              <h1 class="shoe-title">Jordan 11 Cool Grey</h1>
+              <img class="shop-img img-different" src="images/AJ11CG.jpg" alt="">
+              <div style="display: inline-block; width: 90%;">
+                <button class="cart-btn" id="AJ11CG">Add to Cart</button>
+                <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$379.99</p>
+              </div>
+            </div>
+            <div class="col-lg-2 imgDiv nike jordan image-container">
+              <h1 class="shoe-title">Jordan 1 Low Mocha</h1>
+              <img class="shop-img img-different" src="images/AJ1LowM.jpg" alt="">
+              <div style="display: inline-block; width: 90%;">
+                <button class="cart-btn" id="AJ4TY">Add to Cart</button>
+                <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$169.99</p>
+              </div>
+            </div>
+            <div class="col-lg-2 imgDiv newbalance image-container">
+              <h1 class="shoe-title">Aime Leon Dore New Balance 993</h1>
+              <img class="shop-img img-different" src="images/ALDNB993.jpg" alt="">
+              <div style="display: inline-block; width: 90%;">
+                <button class="cart-btn" id="AJ4TY">Add to Cart</button>
+                <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$339.99</p>
+              </div>
+            </div>
+            <div class="col-lg-2 imgDiv nike jordan image-container">
+              <h1 class="shoe-title">Jordan 1 High Tokyo Biohack</h1>
+              <img class="shop-img img-different" src="images/AJ1TBH.jpg" alt="">
+              <div style="display: inline-block; width: 90%;">
+                <button class="cart-btn" id="AJ4TY">Add to Cart</button>
+                <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$299.99</p>
+              </div>
             </div>
           </div>
           
