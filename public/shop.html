@@ -21,11 +21,12 @@
         <div class="container-fluid">
       
           <a href="index.html" class="navbar-brand brand-name">SNKRWRLD 2021</a>
+          <button id="no-disply" class="invisible" style="font-size: 20px; opacity: 0; cursor: pointer;">Bag <i class="fas fa-shopping-bag"></i></button>
           
 
       
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler2" aria-controls="navbarToggler2" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon" style="color: #F0E5CF;"><i class="fas fa-bars"></i></span>
           </button>
       
       
@@ -46,8 +47,8 @@
             </ul>
             
           </div>
-            <button id="cart-icon-btn">Cart(0) <i class="fas fa-shopping-cart"></i></button>
-            <!-- <a href="index.html" class="navbar-brand brand-name">1202 DLRWRKNS</a> -->
+            <a href="" class="navbar-brand brand-name invisible" style="opacity: 0;">1202 DLRWRKNS</a>
+            <button id="cart-icon-btn" style="font-size: 20px; padding-right: 30px;">Bag <i class="fas fa-shopping-bag"></i></button>
           </div>
         </nav>
         
@@ -75,24 +76,14 @@
                 <button id="close-btn"><i class="far fa-times-circle"></i></button>
               </div>
               <div class="cart-title-container row">
-                <div class="col-lg-5">
-                  <h3 style="font-size: 1rem; color: white;">Item</h3>
-                  <hr style="border-color: white;">
-                </div>
-                <div class="col-lg-3">
-                  <h3 style="font-size: 1rem; color: white;">Price</h3>
-                  <hr style="border-color: white;">
-                </div>
-                <div class="col-lg-4">
-                  <h3 style="font-size: 1rem; color: white;">Remove</h3>
-                  <hr style="border-color: white;">
-                </div>
+                <h3 style="font-size: 1.5rem; color: #F0E5CF;">Bag</h3>
               </div>
               <div class="cart-items">
                 
               </div>
 
-              <div class="total">
+              <div class="total" style="display: inline-block;">
+                <button class="checkout-btn" id="cont-to-checkout">Continue to Checkout</button>
                 <p class="cart-title" id="total" style="float: right;"></p>
                 <h3 class="cart-title" style="color: white; float: right; padding-right: 10px;">Total</h3>
               </div>

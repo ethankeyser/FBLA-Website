@@ -9,7 +9,7 @@ if(document.readyState == 'loading') {
 var cartCount = 0
 
 var closeButton = document.getElementById('close-btn')
-closeButton.addEventListener('click', function() {
+  closeButton.addEventListener('click', function() {
   hideCart()
 })
 
@@ -23,6 +23,8 @@ function hideCart() {
   cartContainer.style.display = 'none'
   var shoeContainer = document.getElementById('shoes')
   shoeContainer.style.width = '90%'
+  var bagBtn = document.getElementById('cart-icon-btn')
+  bagBtn.style.opacity = '1'
   getHeight()
   getHeightPicture()
 }
@@ -33,6 +35,8 @@ function showCart() {
   cartContainer.style.animationName = 'slideOut';
   var shoeContainer = document.getElementById('shoes')
   shoeContainer.style.width = '70%'
+  var bagBtn = document.getElementById('cart-icon-btn')
+  bagBtn.style.opacity = '0'
   getHeight()
   getHeightPicture()
 }
@@ -82,18 +86,29 @@ for(var i = 0; i < cartButtons.length; i++) {
     var targetValue = cartCount - 1
     console.log(targetValue.toString())
     btnText.innerText.replace(targetValue.toString(), cartCount.toString())
+    addIdToList()
     updateCartTotal()
     ready()
   })
 }
 
+var purchaseAbleItemsTotal
+
+function addIdToList() {
+  shopItem = button.parentElement.parentElement.id
+  if(shopItem == 'AJ1SF') {
+    purchaseAbleItemsTotal += 21999
+  } else if(shopItem == 'AJ1PT') {
+
+  }
+}
 
 function addItemToCart(title, price) {
   var cartRow = document.createElement("div")
   var cartItems = document.getElementsByClassName("cart-items")[0]
   var cartItemsNames = cartItems.getElementsByClassName("cart-title")
   for(var i = 0; i < cartItemsNames.length; i++) {
-    if(cartItemsNames[i] == title) {
+    if(cartItemsNames[i].innerText == title) {
       alert("Item already in cart")
       return
     }
@@ -101,7 +116,7 @@ function addItemToCart(title, price) {
   var cartRowContents = `
   <div class="item-container row">
     <div class="col-lg-5">
-      <p class="cart-title">${title}</p>
+      <p class="cart-title shoe-name">${title}</p>
     </div>
     <div class="col-lg-3">
       <p class="cart-title price">${price}</p>
@@ -226,3 +241,104 @@ function getHeightPicture() {
 
 window.addEventListener('load', getHeightPicture);
 window.addEventListener("resize", getHeightPicture);
+
+
+
+/*Payment Things*/
+
+var button = document.getElementById("cont-to-checkout")
+var cont = true
+button.addEventListener("click", function() {
+  var purchaseItems = document.getElementsByClassName('shoe-name')
+  var itemPrice = document.getElementsByClassName('price')
+  var total = 0
+  for(var i = 0; i < purchaseItems.length; i++) {
+    if(purchaseItems[i].innerText == 'Jordan 1 High Seafoam' && itemPrice[i].innerText == '$229.99') {
+      cont = true
+      total += 22999
+    } else if(purchaseItems[i].innerText == 'Jordan 1 Prototype' && itemPrice[i].innerText == '$209.99') {
+      cont = true
+      total += 20999
+    } else if(purchaseItems[i].innerText == 'Jordan 5 Retro Shattered Backboard' && itemPrice[i].innerText == '$199.99') {
+      cont = true
+      total += 19999
+    } else if(purchaseItems[i].innerText == 'Jordan 1 Low Team Red' && itemPrice[i].innerText == '$149.99') {
+      cont = true
+      total += 14999
+    } else if(purchaseItems[i].innerText == 'Jordan 1 Low White Grey Black' && itemPrice[i].innerText == '$149.99') {
+      cont = true
+      total += 14999
+    } else if(purchaseItems[i].innerText == 'Blazer Low X Sacai British Tan' && itemPrice[i].innerText == '$139.99') {
+      cont = true
+      total += 13999
+    } else if(purchaseItems[i].innerText == 'Aime Leon Dore New Balance 550 Oxford Grey' && itemPrice[i].innerText == '$219.99') {
+      cont = true
+      total += 21999
+    } else if(purchaseItems[i].innerText == 'Yeezy Boost 350 V2 Mx Oat' && itemPrice[i].innerText == '$289.99') {
+      cont = true
+      total += 28999
+    } else if(purchaseItems[i].innerText == 'Dunk Mid X Social Status Strawberry Milk' && itemPrice[i].innerText == '$219.99') {
+      cont = true
+      total += 21999
+    } else if(purchaseItems[i].innerText == 'Nike X Undefeated Air Force 1' && itemPrice[i].innerText == '$139.99') {
+      cont = true
+      total += 13999
+    } else if(purchaseItems[i].innerText == 'Air Force 1 X Space Jam' && itemPrice[i].innerText == '$159.99') {
+      cont = true
+      total += 15999
+    } else if(purchaseItems[i].innerText == 'Jordan 4 Tour Yellow' && itemPrice[i].innerText == '$299.99') {
+      cont = true
+      total += 29999
+    } else if(purchaseItems[i].innerText == 'Jordan 11 Cool Grey' && itemPrice[i].innerText == '$379.99') {
+      cont = true
+      total += 37999
+    } else if(purchaseItems[i].innerText == 'Jordan 1 Low Mocha' && itemPrice[i].innerText == '$169.99') {
+      cont = true
+      total += 16999
+    } else if(purchaseItems[i].innerText == 'Aime Leon Dore New Balance 993' && itemPrice[i].innerText == '$339.99') {
+      cont = true
+      total += 33999
+    } else if(purchaseItems[i].innerText == 'Jordan 1 High Tokyo Biohack' && itemPrice[i].innerText == '$299.99') {
+      cont = true
+      total += 29999
+    } else {
+      cont = false
+      alert('Price was changed! Please refresh your page and try again.')
+    }
+  }
+  if(cont) {
+    var items = document.getElementsByClassName("item-container")
+    button.addEventListener("click", () => {
+      var regex  = /^\d+(?:\.\d{0,2})$/;
+      var numStr = total;
+      var total2 = total*100
+      if (regex.test(numStr) || total2 % 1 == 0) {
+        fetch('/create-checkout-session-custom', {
+          method: 'POST', 
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            items: [
+              {id: 5, quantity: 1, priceincents: Math.trunc(total2)}
+            ],
+          }),
+        })
+        .then(res => {
+          if (res.ok) return res.json()
+          return res.json().then(json => Promise.reject(json))
+        })
+        .then(({ url }) => {
+          window.location = url
+        })
+        .catch(e => {
+          console.error(e.error)
+        })
+      } else {
+        alert("Please enter a valid dollar amount to submit a custom donation")
+      }
+  })
+  }
+  
+  
+})

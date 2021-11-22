@@ -212,7 +212,7 @@ body {
         margin: 0;
         padding: 6px 8px 6px 16px;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 1rem;
         color: #F0E5CF;
         display: block;
         border: none;
@@ -392,11 +392,12 @@ body {
       .dropdown-btn {
         padding: 6px 8px 6px 16px;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 1.2rem;
         color: #F0E5CF;
         display: block;
         border: none;
         background: none;
+        margin: auto;
         width: 100%;
         cursor: pointer;
         outline: none;
@@ -495,4 +496,30 @@ body {
         color: #F0E5CF;
         padding-right: 15px;
         font-family: 'Merriweather', serif;
+      }
+
+      .cart-icon-container {
+        width: 100%;
+        background-color: #091353;
+        height: 30px;
+      }
+
+
+      .invisible:hover {
+        cursor: pointer;
+      }
+
+      .checkout-btn {
+        font-size: .8rem;
+        background-color: transparent;
+        border: none;
+        float: left;
+        border-radius: 5px;
+        color: white;
+        margin-top: 4px;
+        padding: 6px;
+      }
+
+      .checkout-btn:hover {
+        background-color: green;
       }
