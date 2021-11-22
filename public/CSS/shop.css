@@ -212,7 +212,7 @@ body {
         margin: 0;
         padding: 6px 8px 6px 16px;
         text-decoration: none;
-        font-size: 1rem;
+        font-size: 1vw;
         color: #F0E5CF;
         display: block;
         border: none;
@@ -240,7 +240,7 @@ body {
       }
 
       .middle-container {
-          width: 90%;
+          width: auto;
           margin: auto;
           opacity: 0;
           animation-fill-mode: forwards;
@@ -372,6 +372,16 @@ body {
         width: 10%; 
         position: absolute;
         background-color: #091353;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes close-nav {
+        from {
+          width: 10%;
+        } to {
+          width: 0;
+        }
       }
 
       .side-nav-2 {
@@ -392,7 +402,7 @@ body {
       .dropdown-btn {
         padding: 6px 8px 6px 16px;
         text-decoration: none;
-        font-size: 1.2rem;
+        font-size: 1.2vw;
         color: #F0E5CF;
         display: block;
         border: none;

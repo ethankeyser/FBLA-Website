@@ -1,4 +1,6 @@
 //Use to load certain buttons/functionalities while page is still loading
+var windowWidth1 = document.documentElement.clientWidth
+var isCart = false
 if(document.readyState == 'loading') {
   hideCart()
   document.addEventListener('DOMContentLoaded', ready)
@@ -27,6 +29,7 @@ function hideCart() {
   bagBtn.style.opacity = '1'
   getHeight()
   getHeightPicture()
+  isCart = false
 }
 
 function showCart() {
@@ -39,6 +42,7 @@ function showCart() {
   bagBtn.style.opacity = '0'
   getHeight()
   getHeightPicture()
+  isCart = true
 }
 
 function ready() {
@@ -243,6 +247,25 @@ window.addEventListener('load', getHeightPicture);
 window.addEventListener("resize", getHeightPicture);
 
 
+// window.addEventListener('load', changeSideNavWidth)
+// window.addEventListener('resize', changeSideNavWidth)
+
+// function changeSideNavWidth() {
+//   var windowWidth = document.documentElement.clientWidth
+//   var sideNav = document.getElementById('side-nav-id')
+//   var shoeContainer = document.getElementById('shoes')
+//   if(windowWidth < 1200) {
+//     sideNav.style.width = '0'
+//     sideNav.style.opacity = '0'
+//     shoeContainer.style.width = '100%'
+//     shoeContainer.style.marginLeft = 0
+//   } else {
+//     sideNav.style.width = '10%'
+//     sideNav.style.opacity = '1'
+//     shoeContainer.style.width = '90%'
+//     shoeContainer.style.marginLeft = '10%'
+//   }
+// }
 
 /*Payment Things*/
 
@@ -255,52 +278,52 @@ button.addEventListener("click", function() {
   for(var i = 0; i < purchaseItems.length; i++) {
     if(purchaseItems[i].innerText == 'Jordan 1 High Seafoam' && itemPrice[i].innerText == '$229.99') {
       cont = true
-      total += 22999
+      total += 229.99
     } else if(purchaseItems[i].innerText == 'Jordan 1 Prototype' && itemPrice[i].innerText == '$209.99') {
       cont = true
-      total += 20999
+      total += 209.99
     } else if(purchaseItems[i].innerText == 'Jordan 5 Retro Shattered Backboard' && itemPrice[i].innerText == '$199.99') {
       cont = true
-      total += 19999
+      total += 199.99
     } else if(purchaseItems[i].innerText == 'Jordan 1 Low Team Red' && itemPrice[i].innerText == '$149.99') {
       cont = true
-      total += 14999
+      total += 149.99
     } else if(purchaseItems[i].innerText == 'Jordan 1 Low White Grey Black' && itemPrice[i].innerText == '$149.99') {
       cont = true
-      total += 14999
+      total += 149.99
     } else if(purchaseItems[i].innerText == 'Blazer Low X Sacai British Tan' && itemPrice[i].innerText == '$139.99') {
       cont = true
-      total += 13999
+      total += 139.99
     } else if(purchaseItems[i].innerText == 'Aime Leon Dore New Balance 550 Oxford Grey' && itemPrice[i].innerText == '$219.99') {
       cont = true
-      total += 21999
+      total += 219.99
     } else if(purchaseItems[i].innerText == 'Yeezy Boost 350 V2 Mx Oat' && itemPrice[i].innerText == '$289.99') {
       cont = true
-      total += 28999
+      total += 289.99
     } else if(purchaseItems[i].innerText == 'Dunk Mid X Social Status Strawberry Milk' && itemPrice[i].innerText == '$219.99') {
       cont = true
-      total += 21999
+      total += 219.99
     } else if(purchaseItems[i].innerText == 'Nike X Undefeated Air Force 1' && itemPrice[i].innerText == '$139.99') {
       cont = true
-      total += 13999
+      total += 139.99
     } else if(purchaseItems[i].innerText == 'Air Force 1 X Space Jam' && itemPrice[i].innerText == '$159.99') {
       cont = true
-      total += 15999
+      total += 159.99
     } else if(purchaseItems[i].innerText == 'Jordan 4 Tour Yellow' && itemPrice[i].innerText == '$299.99') {
       cont = true
-      total += 29999
+      total += 299.99
     } else if(purchaseItems[i].innerText == 'Jordan 11 Cool Grey' && itemPrice[i].innerText == '$379.99') {
       cont = true
-      total += 37999
+      total += 379.99
     } else if(purchaseItems[i].innerText == 'Jordan 1 Low Mocha' && itemPrice[i].innerText == '$169.99') {
       cont = true
-      total += 16999
+      total += 169.99
     } else if(purchaseItems[i].innerText == 'Aime Leon Dore New Balance 993' && itemPrice[i].innerText == '$339.99') {
       cont = true
-      total += 33999
+      total += 339.99
     } else if(purchaseItems[i].innerText == 'Jordan 1 High Tokyo Biohack' && itemPrice[i].innerText == '$299.99') {
       cont = true
-      total += 29999
+      total += 299.99
     } else {
       cont = false
       alert('Price was changed! Please refresh your page and try again.')
@@ -313,14 +336,14 @@ button.addEventListener("click", function() {
       var numStr = total;
       var total2 = total*100
       if (regex.test(numStr) || total2 % 1 == 0) {
-        fetch('/create-checkout-session-custom', {
+        fetch('/create-checkout-session', {
           method: 'POST', 
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             items: [
-              {id: 5, quantity: 1, priceincents: Math.trunc(total2)}
+              {id: 16, quantity: 1, priceincents: Math.trunc(total2)}
             ],
           }),
         })
@@ -329,6 +352,7 @@ button.addEventListener("click", function() {
           return res.json().then(json => Promise.reject(json))
         })
         .then(({ url }) => {
+          console.log(url)
           window.location = url
         })
         .catch(e => {
