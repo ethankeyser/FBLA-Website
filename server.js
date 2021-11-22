@@ -23,11 +23,12 @@ const storeItems = new Map ([
     [13, {priceincents: 37999, name: "Jordan 11 Cool Grey"}],
     [14, {priceincents: 16999, name: "Jordan 1 Low Mocha"}],
     [15, {priceincents: 33999, name: "Aime Leon Dore New Balance 993"}],
-    [15, {priceincents: 29999, name: "Jordan 1 High Tokyo Biohack"}]
+    [15, {priceincents: 29999, name: "Jordan 1 High Tokyo Biohack"}],
+    [16, {priceincents: 0, name: "Shoe Purchase, SNKRWRLD LLC"}]
 
 ])
 
-app.post('/create-checkout-session-custom', async (req, res) => {
+app.post('/create-checkout-session', async (req, res) => {
     try {
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
@@ -47,7 +48,7 @@ app.post('/create-checkout-session-custom', async (req, res) => {
 
             }),
             success_url: `${process.env.SERVER_URL}/success.html`,
-            cancel_url: `${process.env.SERVER_URL}/make-a-donation.html`
+            cancel_url: `${process.env.SERVER_URL}/shop.html`
         })
         res.json({url: session.url})
     } catch (e) {
