@@ -33,6 +33,7 @@ body {
     min-height: 100vh;
     position: relative;
     display: block;
+    height: auto;
     padding-bottom: 10rem;
   }
   
@@ -222,6 +223,25 @@ body {
       }
 
       .btn:hover {
+          color: #F7F6F2;
+          font-weight: bold;
+      }
+
+      .btn2 {
+        width: 100%;
+        margin: 0;
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 1vw;
+        color: #F0E5CF;
+        display: block;
+        border: none;
+        background: none;
+        cursor: pointer;
+        outline: none;
+      }
+
+      .btn2:hover {
           color: #F7F6F2;
           font-weight: bold;
       }

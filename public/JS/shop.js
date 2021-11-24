@@ -194,27 +194,52 @@ function removeClass(element, name) {
 }
 
 // Add active class to the current button (highlight it)
-var btnContainer = document.getElementById("btnContainer");
-var btns = btnContainer.getElementsByClassName('btn');
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
+// var btnContainer = document.getElementById("btnContainer");
+// var btns = btnContainer.getElementsByClassName('btn');
+// for (var i = 0; i < btns.length; i++) {
+//   btns[i].addEventListener("click", function(){
+//     var current = document.getElementsByClassName("active");
+//     current[0].className = current[0].className.replace(" active", "");
+//     this.className += " active";
+//   });
+// }
+
+// var dropdownButton = document.getElementById("ddBtn");
+// dropdownButton.addEventListener("click", function() {
+//   var list = this.nextElementSibling;
+//   if(list.style.display == "block") {
+//     list.style.display = "none";
+//   } else {
+//     list.style.display = "block";
+//   }
+//   list.className.split(" ");
+//   list.className += "animate";
+// }) 
+
+var btnContainer2 = document.getElementById("side-nav-id");
+var btns2 = btnContainer2.getElementsByClassName('btn');
+for (var i = 0; i < btns2.length; i++) {
+  btns2[i].addEventListener("click", function(){
     var current = document.getElementsByClassName("active");
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
   });
 }
 
-var dropdownButton = document.getElementById("ddBtn");
-dropdownButton.addEventListener("click", function() {
-  var list = this.nextElementSibling;
-  if(list.style.display == "block") {
-    list.style.display = "none";
-  } else {
-    list.style.display = "block";
-  }
-  list.className.split(" ");
-  list.className += "animate";
-}) 
+var dropdownButton2 = document.getElementsByClassName("ddBtn");
+for(var i = 0; i < dropdownButton2.length; i++) {
+  dropdownButton2[i].addEventListener("click", function() {
+    var list = this.nextElementSibling;
+    if(list.style.display == "block") {
+      list.style.display = "none";
+    } else {
+      list.style.display = "block";
+    }
+    list.className.split(" ");
+    list.className += "animate";
+  }) 
+}
+
 
 
 function getHeight() {
@@ -279,7 +304,7 @@ button.addEventListener("click", function() {
     if(purchaseItems[i].innerText == 'Jordan 1 High Seafoam' && itemPrice[i].innerText == '$229.99') {
       cont = true
       total += 229.99
-    } else if(purchaseItems[i].innerText == 'Jordan 1 Prototype' && itemPrice[i].innerText == '$209.99') {
+    } else if(purchaseItems[i].innerText == 'Jordan 1 High Prototype' && itemPrice[i].innerText == '$209.99') {
       cont = true
       total += 209.99
     } else if(purchaseItems[i].innerText == 'Jordan 5 Retro Shattered Backboard' && itemPrice[i].innerText == '$199.99') {
