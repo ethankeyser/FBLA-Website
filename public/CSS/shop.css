@@ -9,6 +9,23 @@ body {
     height: 100%;
     position: relative;
   }
+
+
+  body::-webkit-scrollbar {
+    width: 8px;               
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: white;       
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #091353;   
+    border-radius: 20px;       
+    border: 3px solid #091353;  
+  }
+
+
   
   h1 {
     font-size: 4rem;
@@ -139,7 +156,7 @@ body {
       .btn-container {
         width: 100%;
         margin: auto;
-        padding-top: 60px;
+        padding-top: 10px;
         opacity: 0;
         animation-fill-mode: forwards;
         animation-name: fadeIn;
@@ -213,7 +230,7 @@ body {
         margin: 0;
         padding: 6px 8px 6px 16px;
         text-decoration: none;
-        font-size: 1vw;
+        font-size: .8vw;
         color: #F0E5CF;
         display: block;
         border: none;
@@ -227,12 +244,31 @@ body {
           font-weight: bold;
       }
 
+      .btn-show {
+        width: 100%;
+        margin: 0;
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 1.2vw;
+        color: #F0E5CF;
+        display: block;
+        border: none;
+        background: none;
+        cursor: pointer;
+        outline: none;
+      }
+
+      .btn-show:hover {
+          color: #F7F6F2;
+          font-weight: bold;
+      }
+
       .btn2 {
         width: 100%;
         margin: 0;
         padding: 6px 8px 6px 16px;
         text-decoration: none;
-        font-size: 1vw;
+        font-size: .8vw;
         color: #F0E5CF;
         display: block;
         border: none;
@@ -389,11 +425,27 @@ body {
 
       .side-nav {
         height: 100%; 
+        display: block;
         width: 10%; 
         position: absolute;
         background-color: #091353;
         animation-duration: 2s;
         animation-fill-mode: forwards;
+        overflow-y: scroll;
+      }
+
+      .side-nav::-webkit-scrollbar {
+        width: 8px;               
+      }
+      
+      .side-nav::-webkit-scrollbar-track {
+        background: #091353;       
+      }
+      
+      .side-nav::-webkit-scrollbar-thumb {
+        background-color: grey;   
+        border-radius: 20px;       
+        border: 3px solid grey;  
       }
 
       @keyframes close-nav {
@@ -412,7 +464,24 @@ body {
         display: none;
         animation-duration: 2s;
         animation-fill-mode: forwards;
+        padding-bottom: 10rem;
+        overflow-y: scroll;
       }
+
+      .side-nav-2::-webkit-scrollbar {
+        width: 8px;               
+      }
+      
+      .side-nav-2::-webkit-scrollbar-track {
+        background: #091353;       
+      }
+      
+      .side-nav-2::-webkit-scrollbar-thumb {
+        background-color: grey;   
+        border-radius: 20px;       
+        border: 3px solid grey;  
+      }
+
 
       
       .dropdown-container {

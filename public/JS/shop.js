@@ -1,5 +1,7 @@
 //Use to load certain buttons/functionalities while page is still loading
 var windowWidth1 = document.documentElement.clientWidth
+var currentItems;
+
 var isCart = false
 if(document.readyState == 'loading') {
   hideCart()
@@ -93,7 +95,13 @@ for(var i = 0; i < cartButtons.length; i++) {
     addIdToList()
     updateCartTotal()
     ready()
+    scrollToTop()
   })
+}
+
+function scrollToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 var purchaseAbleItemsTotal
@@ -161,14 +169,118 @@ function updateCartTotal() {
   }
 }
 
-filterSelection("all")
-function filterSelection(c) {
-  var x, i;
+var appliedFilters = document.getElementById('appliedFilters')
+var previousType = ''
+let classArray = new Array
+let cArray = new Map ([
+  ['style', ''],
+  ['color', ''],
+  ['sizing', '']
+])
+filterSelection("all", 'all')
+function filterSelection(c, type) {
+  var x, i, num;
+  var alreadyPressed = false
   x = document.getElementsByClassName("imgDiv");
-  if (c == "all") c = "";
-  for (i = 0; i < x.length; i++) {
-    removeClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+  appliedFilters.innerText = "Applied Filters: "
+  if (c == "all") {
+    c = ''
+    classArray = new Array
+    for (i = 0; i < x.length; i++) {
+      removeClass(x[i], "show");
+      if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+    }
+    previousType = ''
+  } else {
+    num = 0
+    // console.log(previousType)
+    // previousFilter = cArray.get(previousType)
+    var num, style, color, sizing
+    cArray.set(type, c)
+    // if(previousType == type) {
+    //   appliedFilters.innerText.replace(previousFilter, cArray.get(type))
+    // }
+    for(var i = 0; i < x.length; i++) {
+      var dontAdd = false
+      console.log(cArray.get('style'))
+      if(cArray.get('style') != '') {
+        style = true
+        if(x[i].className.indexOf(cArray.get('style')) > -1 && dontAdd == false) {
+         addClass(x[i], 'show')
+        } else {
+          dontAdd = true
+          removeClass(x[i], 'show')
+        }
+      }
+      if(cArray.get('color') != '') {
+        color = true
+        if(x[i].className.indexOf(cArray.get('color')) > -1 && dontAdd == false) {
+          addClass(x[i], 'show')
+        } else {
+          dontAdd = true
+          removeClass(x[i], 'show')
+        }
+      } 
+      if(cArray.get('sizing') != '') {
+        sizing = true
+        if(x[i].className.indexOf(cArray.get('sizing')) > -1 && dontAdd == false) {
+          addClass(x[i], 'show')
+        } else {
+          dontAdd = true
+          removeClass(x[i], 'show')
+        }
+      }
+      
+    }
+    if(style) num++
+    if(color) num++
+    if(sizing) num++
+    previousType = type
+    console.log(num)
+    var key
+    for(var l = 0; l < num; l++) {
+      if(l == 0) {
+        key = 'style'
+      } else if(l == 1) {
+        key = 'color'
+      } else if(l == 2) {
+        key = 'sizing'
+      }
+      appliedFilters.innerText += ' ' + cArray.get(key)
+    }
+    // if(classArray.length == 0) {
+    //   x = document.getElementsByClassName('imgDiv')
+    // } else {
+    //   x = document.getElementsByClassName('show')
+    // }
+    // console.log(x)
+    // for(var i = 0; i < classArray.length; i++) {
+    //   if(classArray[i] == type) {
+    //     alreadyPressed = true
+    //   }
+    // }
+    // console.log(alreadyPressed)
+    // console.log(c)
+    // if(alreadyPressed) {
+    //   for (i = 0; i < x.length; i++) {
+    //     if (x[i].className.indexOf(c) > -1) {
+    //       console.log('true ' + x[i].className)
+    //       addClass(x[i], 'show')
+    //     } else {
+    //       removeClass(x[i], 'show')
+    //     }
+    //   }
+    // } else {
+    //   for (i = 0; i < x.length; i++) {
+    //     if (x[i].className.indexOf(c) > -1) {
+    //       console.log(x[i].className.indexOf(c))
+    //     } else {
+    //       removeClass(x[i], "show")
+    //     }
+    //   }
+    // }
+    // classArray.push(type)
+    
   }
 }
 
@@ -217,7 +329,7 @@ function removeClass(element, name) {
 // }) 
 
 var btnContainer2 = document.getElementById("side-nav-id");
-var btns2 = btnContainer2.getElementsByClassName('btn');
+var btns2 = document.getElementsByClassName('btn');
 for (var i = 0; i < btns2.length; i++) {
   btns2[i].addEventListener("click", function(){
     var current = document.getElementsByClassName("active");
@@ -347,6 +459,18 @@ button.addEventListener("click", function() {
       cont = true
       total += 339.99
     } else if(purchaseItems[i].innerText == 'Jordan 1 High Tokyo Biohack' && itemPrice[i].innerText == '$299.99') {
+      cont = true
+      total += 299.99
+    } else if(purchaseItems[i].innerText == 'A Ma Maniere Jordan 1 High' && itemPrice[i].innerText == '$499.99') {
+      cont = true
+      total += 299.99
+    }else if(purchaseItems[i].innerText == 'Jordan 1 High Bordaeux' && itemPrice[i].innerText == '$219.99') {
+      cont = true
+      total += 299.99
+    }else if(purchaseItems[i].innerText == 'Dunk High Black White' && itemPrice[i].innerText == '$169.99') {
+      cont = true
+      total += 299.99
+    }else if(purchaseItems[i].innerText == 'Air Max 1 X Patta Rush Maroon' && itemPrice[i].innerText == '$259.99') {
       cont = true
       total += 299.99
     } else {
