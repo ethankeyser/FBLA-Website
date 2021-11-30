@@ -1,6 +1,39 @@
-//Use to load certain buttons/functionalities while page is still loading
+//Used for index.html
+var comesFromIndex = sessionStorage.getItem('isIndex')
+if(document.URL.includes('index.html')) {
+  var selectedStyle = ''
+  var nikeBtn = document.getElementById('Nike')
+  nikeBtn.addEventListener('click', function () {
+    selectedStyle = 'nike'
+    sessionStorage.setItem('style', selectedStyle)
+    window.location = 'shop.html'
+  })
+  var jordanBtn = document.getElementById('Jordan')
+  jordanBtn.addEventListener('click', function () {
+    selectedStyle = 'jordan'
+    sessionStorage.setItem('style', selectedStyle)
+    window.location = 'shop.html'
+  })
+  var yzyBtn = document.getElementById('Yeezy')
+  yzyBtn.addEventListener('click', function () {
+    selectedStyle = 'yeezy'
+    sessionStorage.setItem('style', selectedStyle)
+    window.location = 'shop.html'
+  })
+  sessionStorage.setItem('isIndex', 'true')
+} else {
+
+
+
+
+
+
+
+//-----------------------------------
 var windowWidth1 = document.documentElement.clientWidth
 var currentItems;
+var itemsInCart = 0;
+var cartContainerItems = document.getElementById('cart-icon-btn')
 
 var isCart = false
 if(document.readyState == 'loading') {
@@ -67,9 +100,11 @@ function checkCartItems() {
 function removeCartItem(event) {
   var buttonClicked = event.target
   buttonClicked.parentElement.parentElement.remove();
-  var btnText = document.getElementById('cart-icon-btn').innerText
-  btnText.replace(cartCount, cartCount - 1)
-  cartCount--
+  var newString;
+  var replaceValue = itemsInCart - 1
+  newString = cartContainerItems.innerText.replace(itemsInCart.toString(), replaceValue.toString())
+  cartContainerItems.innerHTML = newString + '<i class="fas fa-shopping-bag"></i>'
+  itemsInCart--
   updateCartTotal();
 }
 
@@ -83,10 +118,13 @@ for(var i = 0; i < cartButtons.length; i++) {
     var shopPrice = button.parentElement
     var title = shopItem.getElementsByClassName("shoe-title")[0].innerText
     var price = shopPrice.getElementsByClassName("shop-price")[0].innerText
+    var size1 = shopPrice.getElementsByClassName("size-select")[0]
+    var size = size1.options[size1.selectedIndex].value
+    console.log(size)
     var imgSrc = shopItem.getElementsByClassName("shop-img")[0].src
     console.log(title + " " + price)
     showCart()
-    addItemToCart(title, price)
+    addItemToCart(title, price, size)
     cartCount++
     var btnText = document.getElementById('cart-icon-btn')
     var targetValue = cartCount - 1
@@ -115,33 +153,48 @@ function addIdToList() {
   }
 }
 
-function addItemToCart(title, price) {
-  var cartRow = document.createElement("div")
-  var cartItems = document.getElementsByClassName("cart-items")[0]
-  var cartItemsNames = cartItems.getElementsByClassName("cart-title")
-  for(var i = 0; i < cartItemsNames.length; i++) {
-    if(cartItemsNames[i].innerText == title) {
-      alert("Item already in cart")
-      return
+function addItemToCart(title, price, size) {
+  if(size == "Select Size") {
+    alert('please select size')
+  } else {
+    var cartRow = document.createElement("div")
+    var cartItems = document.getElementsByClassName("cart-items")[0]
+    var cartItemsNames = cartItems.getElementsByClassName("cart-title")
+    for(var i = 0; i < cartItemsNames.length; i++) {
+      if(cartItemsNames[i].innerText == title) {
+        alert("Item already in cart")
+        return
+      }
     }
+    var cartRowContents = `
+    <div class="item-container row">
+      <div class="col-lg-3">
+        <p class="cart-title shoe-name">${title}</p>
+      </div>
+      <div class="col-lg-3">
+        <p class="cart-title price">${price}</p>
+      </div>
+      <div class="col-lg-3">
+        <p class="cart-title size" style="margin-left: 5px;">Size: ${size}</p>
+      </div>
+      <div class="col-lg-3">
+        <button class="remove-btn" style="height: auto; width: 100%; font-size: .6rem; text-align: center;">Remove</button>
+      </div>
+      <hr style="border-color: white; width: 95%;"/>
+    </div>
+    
+    `
+    cartRow.innerHTML = cartRowContents
+    cartItems.append(cartRow)
+    var replaceValue2 = itemsInCart + 1
+    console.log(replaceValue2)
+    console.log(itemsInCart.toString())
+    var newString;
+    newString = cartContainerItems.innerText.replace(itemsInCart.toString(), replaceValue2.toString())
+    cartContainerItems.innerHTML = newString + '<i class="fas fa-shopping-bag"></i>'
+    itemsInCart++;
   }
-  var cartRowContents = `
-  <div class="item-container row">
-    <div class="col-lg-5">
-      <p class="cart-title shoe-name">${title}</p>
-    </div>
-    <div class="col-lg-3">
-      <p class="cart-title price">${price}</p>
-    </div>
-    <div class="col-lg-4">
-      <button class="remove-btn" style="height: auto; width: 100%; font-size: .6rem; text-align: center;">Remove</button>
-    </div>
-    <hr style="border-color: white; width: 95%;"/>
-  </div>
   
-  `
-  cartRow.innerHTML = cartRowContents
-  cartItems.append(cartRow)
 }
 
 function addToCart(event) {
@@ -177,7 +230,12 @@ let cArray = new Map ([
   ['color', ''],
   ['sizing', '']
 ])
-filterSelection("all", 'all')
+if(sessionStorage.getItem('style') == null) {
+  filterSelection("all", 'all')
+} else {
+  console.log(sessionStorage.getItem('style'))
+  filterSelection(sessionStorage.getItem('style'), 'style')
+}
 function filterSelection(c, type) {
   var x, i, num;
   var alreadyPressed = false
@@ -515,3 +573,4 @@ button.addEventListener("click", function() {
   
   
 })
+}
