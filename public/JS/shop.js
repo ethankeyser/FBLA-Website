@@ -1,5 +1,4 @@
 //Used for index.html
-var comesFromIndex = sessionStorage.getItem('isIndex')
 if(document.URL.includes('index.html')) {
   var selectedStyle = ''
   var nikeBtn = document.getElementById('Nike')
@@ -20,7 +19,7 @@ if(document.URL.includes('index.html')) {
     sessionStorage.setItem('style', selectedStyle)
     window.location = 'shop.html'
   })
-  sessionStorage.setItem('isIndex', 'true')
+  sessionStorage.setItem('isIndex', '0')
 } else {
 
 
@@ -34,7 +33,6 @@ var windowWidth1 = document.documentElement.clientWidth
 var currentItems;
 var itemsInCart = 0;
 var cartContainerItems = document.getElementById('cart-icon-btn')
-
 var isCart = false
 if(document.readyState == 'loading') {
   hideCart()
@@ -224,13 +222,14 @@ function updateCartTotal() {
 
 var appliedFilters = document.getElementById('appliedFilters')
 var previousType = ''
+var previousName = ''
 let classArray = new Array
 let cArray = new Map ([
   ['style', ''],
   ['color', ''],
   ['sizing', '']
 ])
-if(sessionStorage.getItem('style') == null) {
+if(sessionStorage.getItem('style') == null || sessionStorage.style == '') {
   filterSelection("all", 'all')
 } else {
   console.log(sessionStorage.getItem('style'))
@@ -240,20 +239,25 @@ function filterSelection(c, type) {
   var x, i, num;
   var alreadyPressed = false
   x = document.getElementsByClassName("imgDiv");
-  appliedFilters.innerText = "Applied Filters: "
   if (c == "all") {
+    appliedFilters.innerText = "Applied Filters: "
     c = ''
-    classArray = new Array
+    cArray = new Map([
+      ['style', ''],
+      ['color', ''],
+      ['sizing', '']
+    ])
     for (i = 0; i < x.length; i++) {
       removeClass(x[i], "show");
       if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
     }
     previousType = ''
+    previousName = ''
   } else {
     num = 0
     // console.log(previousType)
     // previousFilter = cArray.get(previousType)
-    var num, style, color, sizing
+    var num, style = false, color = false, sizing = false
     cArray.set(type, c)
     // if(previousType == type) {
     //   appliedFilters.innerText.replace(previousFilter, cArray.get(type))
@@ -290,22 +294,16 @@ function filterSelection(c, type) {
       }
       
     }
-    if(style) num++
-    if(color) num++
-    if(sizing) num++
-    previousType = type
-    console.log(num)
-    var key
-    for(var l = 0; l < num; l++) {
-      if(l == 0) {
-        key = 'style'
-      } else if(l == 1) {
-        key = 'color'
-      } else if(l == 2) {
-        key = 'sizing'
-      }
-      appliedFilters.innerText += ' ' + cArray.get(key)
+
+    if(type == previousType) {
+      var newFilter = appliedFilters.innerText.replace(previousName, cArray.get(type))
+      appliedFilters.innerText = newFilter
+    } else {
+      console.log('false')
+      appliedFilters.innerText += ' ' + cArray.get(type)
     }
+    previousType = type
+    previousName = cArray.get(type)
     // if(classArray.length == 0) {
     //   x = document.getElementsByClassName('imgDiv')
     // } else {
@@ -386,23 +384,19 @@ function removeClass(element, name) {
 //   list.className += "animate";
 // }) 
 
-var btnContainer2 = document.getElementById("side-nav-id");
-var btns2 = document.getElementsByClassName('btn');
-for (var i = 0; i < btns2.length; i++) {
-  btns2[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
 
 var dropdownButton2 = document.getElementsByClassName("ddBtn");
 for(var i = 0; i < dropdownButton2.length; i++) {
   dropdownButton2[i].addEventListener("click", function() {
     var list = this.nextElementSibling;
+    var index = this
     if(list.style.display == "block") {
+      var changeArrow = index.innerHTML.replace('<i class="fas fa-caret-up" aria-hidden="true"></i>', '<i class="fas fa-caret-down" aria-hidden="true"></i>')
+      index.innerHTML = changeArrow
       list.style.display = "none";
     } else {
+      var changeArrow = index.innerHTML.replace('<i class="fas fa-caret-down" aria-hidden="true"></i>', '<i class="fas fa-caret-up" aria-hidden="true"></i>')
+      index.innerHTML = changeArrow
       list.style.display = "block";
     }
     list.className.split(" ");
@@ -569,8 +563,10 @@ button.addEventListener("click", function() {
         alert("Please enter a valid dollar amount to submit a custom donation")
       }
   })
+
   }
   
   
 })
+sessionStorage.setItem('style', '')
 }
