@@ -22,8 +22,41 @@ if(document.URL.includes('index.html')) {
   sessionStorage.setItem('isIndex', '0')
 } else {
 
-
-
+var itemsInCart = 0;
+var incrementer = 0
+var cartContainerItems = document.getElementById('cart-icon-btn')
+console.log(sessionStorage.getItem('cartItems'))
+for(var l = 1; l <= sessionStorage.getItem('cartItems'); l++) {
+  var total2 = sessionStorage.getItem('total')
+  var totalAmount = document.getElementById("total")
+  totalAmount.innerText = "$" + total2
+  itemsInCart = sessionStorage.getItem('cartItems')
+  var cartRow = document.createElement("div")
+  var cartItems = document.getElementsByClassName("cart-items")[0]
+  var key = 'cart' + (l).toString()
+  var num = l+incrementer
+  incrementer = 0 
+  if(sessionStorage.getItem(key) == null) {
+    while(sessionStorage.getItem(key) == null) {
+      key = 'cart' + (num+1).toString()
+      console.log(l)
+      console.log(num)
+      console.log(key)
+      incrementer++
+      num++
+      var cartRowContents = sessionStorage.getItem(key)
+    }
+  } else {
+    key = 'cart' + (num).toString()
+    var cartRowContents = sessionStorage.getItem(key)
+  }
+  cartRow.innerHTML = cartRowContents
+  cartItems.append(cartRow)
+  var replaceValue2 = itemsInCart
+  var newString;
+  newString = cartContainerItems.innerText.replace('0', replaceValue2.toString())
+  cartContainerItems.innerHTML = newString + '<i class="fas fa-shopping-bag"></i>'
+}
 
 
 
@@ -31,8 +64,7 @@ if(document.URL.includes('index.html')) {
 //-----------------------------------
 var windowWidth1 = document.documentElement.clientWidth
 var currentItems;
-var itemsInCart = 0;
-var cartContainerItems = document.getElementById('cart-icon-btn')
+
 var isCart = false
 if(document.readyState == 'loading') {
   hideCart()
@@ -98,11 +130,16 @@ function checkCartItems() {
 function removeCartItem(event) {
   var buttonClicked = event.target
   buttonClicked.parentElement.parentElement.remove();
+  console.log(buttonClicked.parentElement.parentElement)
+  var title = buttonClicked.parentElement.parentElement.getElementsByClassName('shoe-name')[0].innerText
+  var itemKey = sessionStorage.getItem(title)
+  sessionStorage.removeItem(itemKey)
   var newString;
   var replaceValue = itemsInCart - 1
   newString = cartContainerItems.innerText.replace(itemsInCart.toString(), replaceValue.toString())
   cartContainerItems.innerHTML = newString + '<i class="fas fa-shopping-bag"></i>'
   itemsInCart--
+  sessionStorage.setItem('cartItems', itemsInCart)
   updateCartTotal();
 }
 
@@ -118,20 +155,24 @@ for(var i = 0; i < cartButtons.length; i++) {
     var price = shopPrice.getElementsByClassName("shop-price")[0].innerText
     var size1 = shopPrice.getElementsByClassName("size-select")[0]
     var size = size1.options[size1.selectedIndex].value
-    console.log(size)
-    var imgSrc = shopItem.getElementsByClassName("shop-img")[0].src
-    console.log(title + " " + price)
-    showCart()
-    addItemToCart(title, price, size)
-    cartCount++
-    var btnText = document.getElementById('cart-icon-btn')
-    var targetValue = cartCount - 1
-    console.log(targetValue.toString())
-    btnText.innerText.replace(targetValue.toString(), cartCount.toString())
-    addIdToList()
-    updateCartTotal()
-    ready()
-    scrollToTop()
+    if(size != "Select Size") {
+      console.log(size)
+      var imgSrc = shopItem.getElementsByClassName("shop-img")[0].src
+      console.log(title + " " + price)
+      showCart()
+      addItemToCart(title, price, size)
+      cartCount++
+      var btnText = document.getElementById('cart-icon-btn')
+      var targetValue = cartCount - 1
+      console.log(targetValue.toString())
+      btnText.innerText.replace(targetValue.toString(), cartCount.toString())
+      addIdToList()
+      updateCartTotal()
+      ready()
+      scrollToTop()
+    } else {
+      alert('please select size')
+    }
   })
 }
 
@@ -191,6 +232,11 @@ function addItemToCart(title, price, size) {
     newString = cartContainerItems.innerText.replace(itemsInCart.toString(), replaceValue2.toString())
     cartContainerItems.innerHTML = newString + '<i class="fas fa-shopping-bag"></i>'
     itemsInCart++;
+    var num = itemsInCart
+    var key = 'cart' + num.toString()
+    sessionStorage.setItem(key, cartRowContents)
+    sessionStorage.setItem('cartItems', itemsInCart)
+    sessionStorage.setItem(title, key)
   }
   
 }
@@ -218,6 +264,7 @@ function updateCartTotal() {
   if(total == 0) {
     hideCart()
   }
+  sessionStorage.setItem('total', total)
 }
 
 var appliedFilters = document.getElementById('appliedFilters')

@@ -10,6 +10,14 @@ body {
   position: relative;
   }
   
+.content {  
+  min-height: 100vh;
+  position: relative;
+  display: block;
+  height: auto;
+  padding-bottom: 10rem;
+}
+
   body::-webkit-scrollbar {
     width: 8px;               
   }
@@ -292,7 +300,11 @@ body {
 
       .bottom-container {
         background-color: #091353;
-        margin-top: 100px;
+        margin: auto;
+        width: 100%;
+        bottom: 0;
+        position: absolute;
+        height: 10rem;
       }
 
       
@@ -301,6 +313,7 @@ body {
         position: relative;
         padding: 20px;
         color: #F0E5CF;
+        font-size: 2rem;
         text-decoration: none;
       }
       
