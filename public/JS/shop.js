@@ -33,23 +33,10 @@ for(var l = 1; l <= sessionStorage.getItem('cartItems'); l++) {
   itemsInCart = sessionStorage.getItem('cartItems')
   var cartRow = document.createElement("div")
   var cartItems = document.getElementsByClassName("cart-items")[0]
-  var key = 'cart' + (l).toString()
-  var num = l+incrementer
-  incrementer = 0 
-  if(sessionStorage.getItem(key) == null) {
-    while(sessionStorage.getItem(key) == null) {
-      key = 'cart' + (num+1).toString()
-      console.log(l)
-      console.log(num)
-      console.log(key)
-      incrementer++
-      num++
-      var cartRowContents = sessionStorage.getItem(key)
-    }
-  } else {
-    key = 'cart' + (num).toString()
-    var cartRowContents = sessionStorage.getItem(key)
-  }
+  var key = 'cart' + l.toString()
+  console.log(key)
+  cartRowContents = sessionStorage.getItem(key)
+  console.log(cartRowContents)
   cartRow.innerHTML = cartRowContents
   cartItems.append(cartRow)
   var replaceValue2 = itemsInCart
@@ -57,6 +44,42 @@ for(var l = 1; l <= sessionStorage.getItem('cartItems'); l++) {
   newString = cartContainerItems.innerText.replace('0', replaceValue2.toString())
   cartContainerItems.innerHTML = newString + '<i class="fas fa-shopping-bag"></i>'
 }
+// for(var l = 1; l <= sessionStorage.getItem('cartItems'); l++) {
+//   var total2 = sessionStorage.getItem('total')
+//   var totalAmount = document.getElementById("total")
+//   totalAmount.innerText = "$" + total2
+//   itemsInCart = sessionStorage.getItem('cartItems')
+//   var cartRow = document.createElement("div")
+//   var cartItems = document.getElementsByClassName("cart-items")[0]
+//   var key = 'cart' + (l+incrementer).toString()
+//   var num = l+incrementer
+
+//   if(sessionStorage.getItem(key) == null) {
+//     if(l == 1) {
+//       key = 'cart2'
+//       incrementer++
+//       var cartRowContents = sessionStorage.getItem(key)
+//     }
+//     while(sessionStorage.getItem(key) == null) {
+//       key = 'cart' + (num+1).toString()
+//       console.log(l)
+//       console.log(num)
+//       console.log(key)
+//       incrementer++
+//       num++
+//       var cartRowContents = sessionStorage.getItem(key)
+//     }
+//   } else {
+//     key = 'cart' + (num).toString()
+//     var cartRowContents = sessionStorage.getItem(key)
+//   }
+//   cartRow.innerHTML = cartRowContents
+//   cartItems.append(cartRow)
+//   var replaceValue2 = itemsInCart
+//   var newString;
+//   newString = cartContainerItems.innerText.replace('0', replaceValue2.toString())
+//   cartContainerItems.innerHTML = newString + '<i class="fas fa-shopping-bag"></i>'
+// }
 
 
 
@@ -133,12 +156,27 @@ function removeCartItem(event) {
   console.log(buttonClicked.parentElement.parentElement)
   var title = buttonClicked.parentElement.parentElement.getElementsByClassName('shoe-name')[0].innerText
   var itemKey = sessionStorage.getItem(title)
-  sessionStorage.removeItem(itemKey)
-  var newString;
-  var replaceValue = itemsInCart - 1
-  newString = cartContainerItems.innerText.replace(itemsInCart.toString(), replaceValue.toString())
-  cartContainerItems.innerHTML = newString + '<i class="fas fa-shopping-bag"></i>'
+  var index = sessionStorage.getItem(itemKey + 'index')
+  console.log(index)
   itemsInCart--
+  console.log(itemsInCart)
+  for(var r = parseInt(index); r <= itemsInCart; r++) {
+    var key1 = 'cart' + (r+1).toString()
+    console.log(key1)
+    if(sessionStorage.getItem(key1) != null) {
+      var newKey = key1.replace((r+1).toString(), (r).toString())
+      var keyContents = sessionStorage.getItem(key1)
+      console.log(keyContents)
+      sessionStorage.setItem(newKey, keyContents)
+      console.log(newKey)
+      console.log(sessionStorage.getItem(newKey))
+    }
+  }
+
+  var newString;
+  var replaceValue = itemsInCart + 1
+  newString = cartContainerItems.innerText.replace(replaceValue.toString(), itemsInCart.toString())
+  cartContainerItems.innerHTML = newString + '<i class="fas fa-shopping-bag"></i>'
   sessionStorage.setItem('cartItems', itemsInCart)
   updateCartTotal();
 }
@@ -196,11 +234,17 @@ function addItemToCart(title, price, size) {
   if(size == "Select Size") {
     alert('please select size')
   } else {
+    console.log(size)
     var cartRow = document.createElement("div")
     var cartItems = document.getElementsByClassName("cart-items")[0]
-    var cartItemsNames = cartItems.getElementsByClassName("cart-title")
-    for(var i = 0; i < cartItemsNames.length; i++) {
-      if(cartItemsNames[i].innerText == title) {
+    var cartItemsNames = cartItems.getElementsByClassName("shoe-name")
+    if(itemsInCart != 0) var cartItemsSizes = document.getElementsByClassName("size")
+    // console.log(cartItemsSizes.innerText)
+    for(var i = 0; i < itemsInCart; i++) {
+      console.log(cartItemsSizes[i].innerText)
+      console.log(cartItemsNames[i])
+      console.log('Size: ' + size.toString())
+      if(cartItemsNames[i].innerText == title && cartItemsSizes[i].innerText == 'Size: ' + size.toString()) {
         alert("Item already in cart")
         return
       }
@@ -225,7 +269,7 @@ function addItemToCart(title, price, size) {
     `
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
-    var replaceValue2 = itemsInCart + 1
+    var replaceValue2 = parseInt(itemsInCart) + 1 
     console.log(replaceValue2)
     console.log(itemsInCart.toString())
     var newString;
@@ -234,9 +278,11 @@ function addItemToCart(title, price, size) {
     itemsInCart++;
     var num = itemsInCart
     var key = 'cart' + num.toString()
+    var indexKey = 'cart' + num.toString() + 'index'
     sessionStorage.setItem(key, cartRowContents)
     sessionStorage.setItem('cartItems', itemsInCart)
     sessionStorage.setItem(title, key)
+    sessionStorage.setItem(indexKey, itemsInCart)
   }
   
 }

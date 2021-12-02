@@ -160,8 +160,8 @@ body {
         opacity: 0;
         animation-fill-mode: forwards;
         animation-name: fadeIn;
-        animation-delay: 3s;
-        animation-duration: 1s;
+        animation-delay: 1.5s;
+        animation-duration: .5s;
         display: block;
       }
 
@@ -170,8 +170,8 @@ body {
         opacity: 0;
         animation-fill-mode: forwards;
         animation-name: fadeIn;
-        animation-duration: 1s;
-        animation-delay: 3s;
+        animation-duration: .5s;
+        animation-delay: 1.5s;
         width: 90%;
       }
 
@@ -302,8 +302,8 @@ body {
           opacity: 0;
           animation-fill-mode: forwards;
           animation-name: fadeIn;
-          animation-delay: 3s;
-          animation-duration: 1s;
+          animation-delay: 1.5s;
+          animation-duration: .5s;
       }
 
       .imgDiv {
@@ -318,7 +318,7 @@ body {
       .title {
         margin: auto;
         animation-name: fadeIn;
-        animation-duration: 1s;
+        animation-duration: .5s;
         display: inline;
         padding: 10px;
       }
@@ -329,8 +329,8 @@ body {
         animation-fill-mode: forwards;
         margin: auto;
         animation-name: fadeIn;
-        animation-delay: 1s;
-        animation-duration: 1s;
+        animation-delay: .5s;
+        animation-duration: .5s;
         padding: 10px;
       }
 
@@ -340,8 +340,8 @@ body {
         animation-fill-mode: forwards;
         margin: auto;
         animation-name: fadeIn;
-        animation-delay: 2s;
-        animation-duration: 1s;
+        animation-delay: 1s;
+        animation-duration: .5s;
         padding: 10px;
       }
 

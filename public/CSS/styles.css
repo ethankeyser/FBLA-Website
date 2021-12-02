@@ -164,7 +164,7 @@ body {
       .title {
         margin: auto;
         animation-name: fadeIn;
-        animation-duration: 2s;
+        animation-duration: 1s;
       }
 
       .subtitle {
@@ -172,8 +172,8 @@ body {
         animation-fill-mode: forwards;
         margin: auto;
         animation-name: fadeIn;
-        animation-delay: 2s;
-        animation-duration: 1s;
+        animation-delay: 1s;
+        animation-duration: .5s;
       }
 
       .subtitle2 {
@@ -181,8 +181,8 @@ body {
         animation-fill-mode: forwards;
         margin: auto;
         animation-name: fadeIn;
-        animation-delay: 3s;
-        animation-duration: .75s;
+        animation-delay: 1.5s;
+        animation-duration: .5s;
       }
 
       .subtitle3 {
@@ -190,7 +190,7 @@ body {
         animation-fill-mode: forwards;
         margin: auto;
         animation-name: fadeIn;
-        animation-delay: 3.75s;
+        animation-delay: 2s;
         animation-duration: .5s;
       }
 
@@ -199,8 +199,8 @@ body {
         animation-fill-mode: forwards;
         margin: auto;
         animation-name: fadeIn;
-        animation-delay: 5s;
-        animation-duration: 1s;
+        animation-delay: 2.5s;
+        animation-duration: .75s;
       }
 
       @keyframes fadeIn {
@@ -216,8 +216,8 @@ body {
         opacity: 0;
         animation-fill-mode: forwards;
         animation-name: fadeIn;
-        animation-duration: 2s;
-        animation-delay: 6s;
+        animation-duration: 1s;
+        animation-delay: 3.25s;
       }
 
       .middle-container {
@@ -226,8 +226,8 @@ body {
         opacity: 0;
         animation-fill-mode: forwards;
         animation-name: fadeIn;
-        animation-duration: 2s;
-        animation-delay: 6s;
+        animation-duration: 1s;
+        animation-delay: 3.25s;
       }
       .shop-pics {
         opacity: 1;
@@ -278,8 +278,8 @@ body {
         opacity: 0;
         animation-fill-mode: forwards;
         animation-name: fadeIn;
-        animation-duration: 2s;
-        animation-delay:6s;
+        animation-duration: 1s;
+        animation-delay:3.25s;
         width: 80%;
         margin: auto;
       }
