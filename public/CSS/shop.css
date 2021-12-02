@@ -605,9 +605,6 @@ body {
       }
 
 
-      .invisible:hover {
-        cursor: pointer;
-      }
 
       .checkout-btn {
         font-size: .8rem;
@@ -633,7 +630,7 @@ body {
         border-radius: 5px;
         float: left;
         font-size: .8rem;
-        width: 60%;
+        width: 70%;
       }
 
       .draw-btn {

@@ -49,10 +49,31 @@
                 </ul>
                 
               </div>
-              <a href="index.html" class="navbar-brand brand-name">ASU DLRWRKNS</a>
+              <a href="" class="navbar-brand brand-name invisible" style="opacity: 0;">ASU DLRWRKNS</a>
+              <button id="cart-icon-btn" style="font-size: 20px; padding-right: 30px;">Bag(0) <i class="fas fa-shopping-bag"></i></button>
               </div>
             </nav>
+
         <div class="content">
+          <div class="side-nav-2" id="cart" style="right: 0;">
+            <div id="cartContainer" class="row cart-container">
+              <div style="width: 100%; display: block; padding-bottom: 10px;">
+                <button id="close-btn"><i class="far fa-times-circle"></i></button>
+              </div>
+              <div class="cart-title-container row">
+                <h3 style="font-size: 1.5rem; color: #F0E5CF;">Bag</h3>
+              </div>
+              <div class="cart-items">
+                
+              </div>
+
+              <div class="total" style="display: inline-block;">
+                <button class="checkout-btn" id="cont-to-checkout">Continue to Checkout</button>
+                <p class="cart-title" id="total" style="float: right;"></p>
+                <h3 class="cart-title" style="color: white; float: right; padding-right: 10px;">Total</h3>
+              </div>
+            </div>
+          </div>
           <div class="top-container">
             <h1 class="title">Welcome.</h1>
             <h2 class="subtitle">Your Sneaker Game</h2>
@@ -61,7 +82,7 @@
             <h3 class="subtitle4">EVOLVE</h3>
           </div>
           <hr class="top-hr" />
-          <div class="middle-container row" style="width: 90%; margin: auto;">
+          <div class="middle-container row" id="shoes" style="width: 90%; margin: auto;">
            
             <div class="col-md-4 image-container">
               <h1 class="shop-heading">Shop Jordan</h1>
@@ -79,7 +100,7 @@
               <button class="middle-images nike" id="Nike">Shop Now</button>
             </div>
           </div>
-          <div class="row middle-bottom-container">
+          <div class="row middle-bottom-container" id="bottom-cont">
             <hr>
             <h1 style="font-size: 2rem; margin-top: 50px;">Our Mission</h1>
             <div class="col-md-3">

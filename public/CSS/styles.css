@@ -342,3 +342,76 @@ body {
       .links-home {
         margin: 20px;
       }
+
+      .side-nav-2 {
+        height: 100%; 
+        width: 20%; 
+        position: absolute;
+        background-color: #091353;
+        display: none;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        padding-bottom: 10rem;
+        overflow-y: scroll;
+      }
+
+      .side-nav-2::-webkit-scrollbar {
+        width: 8px;               
+      }
+      
+      .side-nav-2::-webkit-scrollbar-track {
+        background: #091353;       
+      }
+      
+      .side-nav-2::-webkit-scrollbar-thumb {
+        background-color: grey;   
+        border-radius: 20px;       
+        border: 3px solid grey;  
+      }
+
+      #close-btn {
+        float: right;
+        font-size: 1rem;
+        background-color: transparent;
+        border: none;
+        color: white;
+      }
+
+      .cart-icon-container {
+        width: 100%;
+        background-color: #091353;
+        height: 30px;
+      }
+
+      .total {
+        display: inline;
+        margin-top: 10px;
+      }
+
+      .checkout-btn {
+        font-size: .8rem;
+        background-color: transparent;
+        border: none;
+        float: left;
+        border-radius: 5px;
+        color: white;
+        margin-top: 4px;
+        padding: 6px;
+      }
+
+      .checkout-btn:hover {
+        background-color: green;
+      }
+
+      .cart-title {
+        font-size: .8rem;
+        margin-top: 10px;
+      }
+
+      #cart-icon-btn {
+        background-color: transparent;
+        border: none;
+        color: #F0E5CF;
+        padding-right: 15px;
+        font-family: 'Merriweather', serif;
+      }
