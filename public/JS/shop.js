@@ -1,5 +1,14 @@
 //Used for index.html
 if(document.URL.includes('index.html')) {
+  window.addEventListener('load', changeWidth);
+  window.addEventListener("resize", changeWidth);
+
+  function changeWidth() {
+    var btnWidth = document.getElementById('cart-icon-btn')
+    var widthBtn = btnWidth.offsetWidth
+    var btnWidth2 = document.getElementById('no-disply')
+    btnWidth2.style.width = widthBtn
+  }
   function updateCartTotal() {
     var priceElements = document.getElementsByClassName("price");
     var total = 0;
@@ -79,6 +88,9 @@ function hideCart() {
   shoeContainer.style.float = ''
   var bottomCont = document.getElementById('bottom-cont')
   bottomCont.style.margin = 'auto'
+  var topCont = document.getElementById('top')
+  topCont.style.width = '100%'
+  topCont.style.float = ''
   var bagBtn = document.getElementById('cart-icon-btn')
   bagBtn.style.opacity = '1'
   isCart = false
@@ -753,6 +765,16 @@ function getHeight() {
 
 window.addEventListener('load', getHeight);
 window.addEventListener("resize", getHeight);
+
+window.addEventListener('load', changeWidth);
+window.addEventListener("resize", changeWidth);
+
+function changeWidth() {
+  var btnWidth = document.getElementById('cart-icon-btn')
+  var widthBtn = btnWidth.offsetWidth
+  var btnWidth2 = document.getElementById('no-disply')
+  btnWidth2.style.width = widthBtn
+}
 
 
 function getHeightPicture() {
