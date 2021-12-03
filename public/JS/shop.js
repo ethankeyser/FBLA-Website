@@ -1,5 +1,21 @@
 //Used for index.html
 if(document.URL.includes('index.html')) {
+  function updateCartTotal() {
+    var priceElements = document.getElementsByClassName("price");
+    var total = 0;
+    for(var i = 0; i < priceElements.length; i++) {
+      total += parseFloat(priceElements[i].innerText.replace('$', ''));
+      console.log(total)
+    }
+    var totalAmount = document.getElementById("total");
+    totalAmount.innerText = "$" + total.toString();
+    if(total == 0) {
+      hideCart()
+    }
+    sessionStorage.setItem('total', total)
+  }
+  var isCart = false
+  ready()
   var selectedStyle = ''
   var nikeBtn = document.getElementById('Nike')
   nikeBtn.addEventListener('click', function () {
@@ -22,9 +38,9 @@ if(document.URL.includes('index.html')) {
   sessionStorage.setItem('isIndex', '0')
 
   var itemsInCart = 0;
-var incrementer = 0
-var cartContainerItems = document.getElementById('cart-icon-btn')
-console.log(sessionStorage.getItem('cartItems'))
+  var incrementer = 0
+  var cartContainerItems = document.getElementById('cart-icon-btn')
+  console.log(sessionStorage.getItem('cartItems'))
 for(var l = 1; l <= sessionStorage.getItem('cartItems'); l++) {
   var total2 = sessionStorage.getItem('total')
   var totalAmount = document.getElementById("total")
@@ -77,6 +93,9 @@ function showCart() {
   shoeContainer.style.float = 'left'
   var bottomCont = document.getElementById('bottom-cont')
   bottomCont.style.margin = '0'
+  var topCont = document.getElementById('top')
+  topCont.style.width = '80%'
+  topCont.style.float = 'left'
   var bagBtn = document.getElementById('cart-icon-btn')
   bagBtn.style.opacity = '0'
   isCart = true
@@ -84,7 +103,8 @@ function showCart() {
 
 function ready() {
   var removeBtns = document.getElementsByClassName("remove-btn");
-
+  console.log('worked')
+  console.log(removeBtns.length)
   for(var i = 0; i < removeBtns.length; i++) {
     var button = removeBtns[i]
     button.addEventListener("click", removeCartItem)
@@ -208,7 +228,7 @@ button.addEventListener("click", function() {
       var numStr = total;
       var total2 = total*100
       if (regex.test(numStr) || total2 % 1 == 0) {
-        fetch('/create-checkout-session', {
+        fetch('/create-checkout-session1', {
           method: 'POST', 
           headers: {
             'Content-Type': 'application/json'
@@ -239,6 +259,7 @@ button.addEventListener("click", function() {
   
   
 })
+ready()
 } else {
 
 var itemsInCart = 0;

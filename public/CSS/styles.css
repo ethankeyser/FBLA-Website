@@ -388,6 +388,21 @@ body {
         margin-top: 10px;
       }
 
+      /* #cont-to-checkout1 {
+        font-size: .8rem;
+        background-color: transparent;
+        border: none;
+        float: left;
+        border-radius: 5px;
+        color: white;
+        margin-top: 4px;
+        padding: 6px;
+      }
+
+      #cont-to-checkout1:hover {
+        background-color: green;
+      } */
+      
       .checkout-btn {
         font-size: .8rem;
         background-color: transparent;
@@ -414,4 +429,30 @@ body {
         color: #F0E5CF;
         padding-right: 15px;
         font-family: 'Merriweather', serif;
+      }
+
+      .remove-btn {
+        background-color: transparent;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 6px;
+        margin-top: 10px;
+      }
+
+      .remove-btn:hover {
+        background-color: #BD2000;
+      }
+
+      .item-container {
+        width: 100%;
+      }
+
+      @keyframes slideOut {
+        from {
+          width: 0;
+        }
+        to {
+          width: 20%;
+        }
       }
