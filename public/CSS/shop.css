@@ -157,12 +157,8 @@ body {
         width: 100%;
         margin: auto;
         padding-top: 10px;
-        opacity: 0;
-        animation-fill-mode: forwards;
-        animation-name: fadeIn;
-        animation-delay: 1.5s;
-        animation-duration: .5s;
         display: block;
+
       }
 
       .top-hr {
@@ -171,7 +167,7 @@ body {
         animation-fill-mode: forwards;
         animation-name: fadeIn;
         animation-duration: .5s;
-        animation-delay: 1.5s;
+        animation-delay: 1s;
         width: 90%;
       }
 
@@ -183,6 +179,7 @@ body {
         bottom: 0;
         position: absolute;
         height: 10rem;
+        z-index: 3;
       }
 
       
@@ -231,7 +228,7 @@ body {
         margin: 0;
         padding: 6px 8px 6px 16px;
         text-decoration: none;
-        font-size: .8vw;
+        font-size: 14px;
         color: #F0E5CF;
         display: block;
         border: none;
@@ -250,7 +247,7 @@ body {
         margin: 0;
         padding: 6px 8px 6px 16px;
         text-decoration: none;
-        font-size: 1.2vw;
+        font-size: 14px;
         color: #F0E5CF;
         display: block;
         border: none;
@@ -302,7 +299,7 @@ body {
           opacity: 0;
           animation-fill-mode: forwards;
           animation-name: fadeIn;
-          animation-delay: 1.5s;
+          animation-delay: 1s;
           animation-duration: .5s;
       }
 
@@ -426,13 +423,15 @@ body {
 
       .side-nav {
         height: 100%; 
-        display: block;
+        display: none;
         width: 10%; 
         position: absolute;
         background-color: #091353;
-        animation-duration: 2s;
-        animation-fill-mode: forwards;
         overflow-y: scroll;
+        z-index: 1;
+        opacity: .9;
+        animation-fill-mode: forwards;
+        animation-duration: 1s;
       }
 
       .side-nav::-webkit-scrollbar {
@@ -459,7 +458,6 @@ body {
 
       .side-nav-2 {
         height: 100%; 
-        width: 20%; 
         position: absolute;
         background-color: #091353;
         display: none;
@@ -467,6 +465,8 @@ body {
         animation-fill-mode: forwards;
         padding-bottom: 10rem;
         overflow-y: scroll;
+        z-index: 2;
+        opacity: .9;
       }
 
       .side-nav-2::-webkit-scrollbar {
@@ -492,7 +492,7 @@ body {
       .dropdown-btn {
         padding: 6px 8px 6px 16px;
         text-decoration: none;
-        font-size: 1.2vw;
+        font-size: 14px;
         color: #F0E5CF;
         display: block;
         border: none;
@@ -501,6 +501,7 @@ body {
         width: 100%;
         cursor: pointer;
         outline: none;
+        z-index: 2;
       }
 
       .dropdown-btn:hover {
@@ -569,21 +570,20 @@ body {
           width: 0;
         }
         to {
-          width: 20%;
-        }
-      }
-
-      @keyframes slideIn {
-        from {
-          width: 20%;
-        } 
-        to {
-          width: 0;
+          width: var(--w, 30vw);
         }
       }
 
       #close-btn {
         float: right;
+        font-size: 1rem;
+        background-color: transparent;
+        border: none;
+        color: white;
+      }
+
+      #close-btn2 {
+        float: left;
         font-size: 1rem;
         background-color: transparent;
         border: none;
@@ -657,4 +657,28 @@ body {
         color: #091353;
         margin-top: 15px;
         float: right;
+      }
+
+      .filter-btn {
+        float: left;
+        position: relative;
+        z-index: 1;
+        width: 0;
+        height: 0;
+      }
+
+      .fltr-btn {
+        color: #F0E5CF;
+        background-color: #091353;
+        border: none;
+        margin-left: -20;
+        float: left;
+        transform: rotate(90deg);
+        display: block;
+        opacity: .9;
+        z-index: 1;
+        height: auto;
+        width: auto;
+        position: fixed;
+        border-radius: 15px 15px 0 0;
       }

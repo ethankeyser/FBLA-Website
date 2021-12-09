@@ -1,6 +1,6 @@
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>SNKRWRLD USA - Shop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="css/shop.css">
@@ -55,6 +55,9 @@
         <div class="content">
         <div class="row" style="display: block; padding-bottom: 30px;">
           <div class="side-nav" id="side-nav-id" style="padding-bottom: 10rem;">
+            <div style="width: 100%; display: block; padding-bottom: 15px;">
+              <button id="close-btn2"><i class="far fa-times-circle"></i></button>
+            </div>
             <div id="btnContainer" class="btn-container">
               <h2 id="appliedFilters" style="font-size: 1.2vh; color: #F0E5CF; margin: 0; width: 100%; padding: 6px 8px 6px 16px;">Applied Filters: </h2>
               <button class="btn-show" onclick="filterSelection('all')" style="padding-top: 20px;">Show All</button>
@@ -93,7 +96,7 @@
               </div>
             </div>
           </div>
-
+          
           <div class="side-nav-2" id="cart" style="right: 0;">
             <div id="cartContainer" class="row cart-container">
               <div style="width: 100%; display: block; padding-bottom: 10px;">
@@ -114,16 +117,15 @@
             </div>
           </div>
           <div class="title-container" style="width: 100%;">
-            <h2 class="title">Find</h2>
-            <h2 class="subtitle">Your</h2>
-            <h2 class="subtitle2">Pair</h2>
+            <h2 class="title" id="title"></h2>
           </div>
-          <div class="middle-container row" id="shoes" style="width: 90%; margin-left: 10%; margin-right: 20%;">
+          <button class="fltr-btn" id="filterBtn">Filters<i class="fas fa-chevron-up"></i></button>
+          <div class="middle-container row" id="shoes" style="width: 100%;">
             <hr class="top-hr">
            
            <div class="col-lg-3 imgDiv nike jordan image-container white green multi men">
               <h1 class="shoe-title">Jordan 1 High Seafoam</h1>
-              <img class="shop-img" id="imgHeightModel" src="images/aj1SF.jpg" alt="">
+              <img class="shop-img" id="imgHeightModel" src="images/aj1sf.jpg" alt="">
               <div style="display: inline-block; width: 90%;">
                 <button class="cart-btn" id="AJ1SF">Add to Cart</button>
                 <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$229.99</p>
@@ -135,7 +137,7 @@
            </div>
            <div class="col-lg-3 imgDiv nike jordan image-container blue white black orange multi men">
               <h1 class="shoe-title">Jordan 1 High Prototype</h1>
-              <img class="shop-img" src="images/aj1PT.jpg" alt="">
+              <img class="shop-img" src="images/aj1pt.jpg" alt="">
               <div style="display: inline-block; width: 90%;">
                 <button class="cart-btn" id="AJ1PT">Add to Cart</button>
                 <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$209.99</p>
@@ -147,7 +149,7 @@
             </div>
             <div class="col-lg-3 imgDiv nike jordan image-container white orange multi men">
               <h1 class="shoe-title" id="J5SB">Jordan 5 Retro Shattered Backboard</h1>
-                <img class="shop-img" src="images/aj5SB.jpg" alt="">
+                <img class="shop-img" src="images/aj5sb.jpg" alt="">
                 <div style="display: inline-block; width: 90%;">
                   <button class="cart-btn" id="AJ5SB">Add to Cart</button>
                   <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$199.99</p>
@@ -161,7 +163,7 @@
             </div>
             <div class="col-lg-3 imgDiv nike jordan image-container white maroon multi woman">
               <h1 class="shoe-title">Jordan 1 Low Team Red</h1>
-                <img class="shop-img img-different" src="images/aj1lowTR.jpg" alt="">
+                <img class="shop-img img-different" src="images/aj1Lowtr.jpg" alt="">
                 <div style="display: inline-block; width: 90%;">
                   <button class="cart-btn" id="AJ1TR">Add to Cart</button>
                   <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$149.99</p>
@@ -173,8 +175,8 @@
                 
             </div>
             <div class="col-lg-3 imgDiv nike jordan image-container white grey black multi men">
-              <h1 class="shoe-title">Jordan 1 Low White Grey Black</h1>
-                <img class="shop-img" src="images/aj1LowBWG.jpg" alt="">
+              <h1 class="shoe-title">Jordan 1 Low Mocha</h1>
+                <img class="shop-img img-different" src="images/aj1LowM.jpg" alt="">
                 <div style="display: inline-block; width: 90%;">
                   <button class="cart-btn" id="AJ1WGB">Add to Cart</button>
                   <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$149.99</p>
@@ -186,21 +188,21 @@
                 
             </div>
             <div class="col-lg-3 imgDiv nike sacai image-container brown white red multi men">
-              <h1 class="shoe-title">Blazer Low X Sacai British Tan</h1>
-                <img class="shop-img" src="images/bls.jpg" alt="">
+              <h1 class="shoe-title">Blazer Low X Sacai X Kaws Team Red</h1>
+                <img class="shop-img img-different" src="images/blsktr.jpg" alt="">
                 <div style="display: inline-block; width: 90%;">
                   <button class="cart-btn" id="BLBT">Add to Cart</button>
-                  <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$139.99</p>
+                  <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$189.99</p>
                   <select name="Size" id="size-BLBT" class="size-select">
                     <option value="Select Size">Select Size</option>
-                    <option value="11.5">11.5</option>
+                    <option value="11">11</option>
                   </select>
                 </div>
                 
             </div>
             <div class="col-lg-3 imgDiv newbalance image-container grey white multi men">
               <h1 class="shoe-title">Aime Leon Dore New Balance 550 Oxford Grey</h1>
-                <img class="shop-img" src="images/aldNB.jpg" alt="">
+                <img class="shop-img img-different" src="images/aldnb550.jpg" alt="">
                 <div style="display: inline-block; width: 90%;">
                   <button class="cart-btn" id="ALDNB550OB">Add to Cart</button>
                   <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$219.99</p>
@@ -213,7 +215,7 @@
             </div>
             <div class="col-lg-3 imgDiv yeezy image-container multi men">
               <h1 class="shoe-title">Yeezy Boost 350 V2 Mx Oat</h1>
-                <img class="shop-img" src="images/yzy350.jpg" alt="">
+                <img class="shop-img img-different" src="images/yzy350mx.jpg" alt="">
                 <div style="display: inline-block; width: 90%;">
                   <button class="cart-btn" id="YZY350MO">Add to Cart</button>
                   <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$289.99</p>
@@ -227,7 +229,7 @@
             </div>
             <div class="col-lg-3 imgDiv nike socialstatus image-container pink white multi men">
               <h1 class="shoe-title">Dunk Mid X Social Status Strawberry Milk</h1>
-                <img class="shop-img img-different" src="images/dmSS.jpg" alt="">
+                <img class="shop-img img-different" src="images/dmss.jpg" alt="">
                 <div style="display: inline-block; width: 90%;">
                   <button class="cart-btn" id="DMSM">Add to Cart</button>
                   <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$219.99</p>
@@ -238,26 +240,13 @@
                 </div>
                 
             </div>
-            <div class="col-lg-3 imgDiv nike airforce image-container blue white yellow multi men">
-              <h1 class="shoe-title">Nike X Undefeated Air Force 1</h1>
-                <img class="shop-img img-different" src="images/af1UD.jpg" alt="">
+            <div class="col-lg-3 imgDiv nike image-container green white orange multi men">
+              <h1 class="shoe-title">Dunk Low NY vs NY</h1>
+                <img class="shop-img img-different" src="images/dlNY.jpg" alt="">
                 <div style="display: inline-block; width: 90%;">
-                  <button class="cart-btn" id="AF1BYW">Add to Cart</button>
-                  <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$139.99</p>
-                  <select name="Size" id="size-AF1BYW" class="size-select">
-                    <option value="Select Size">Select Size</option>
-                    <option value="11">11</option>
-                  </select>
-                </div>
-                
-            </div>
-            <div class="col-lg-3 imgDiv nike airforce image-container blue white multi men">
-                <h1 class="shoe-title">Air Force 1 X Space Jam</h1>
-                <img class="shop-img img-different" src="images/af1SJ.jpg" alt="">
-                <div style="display: inline-block; width: 90%;">
-                  <button class="cart-btn" id="AF1SJ">Add to Cart</button>
-                  <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$159.99</p>
-                  <select name="Size" id="size-AF1SJ" class="size-select">
+                  <button class="cart-btn" id="DMSM">Add to Cart</button>
+                  <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$299.99</p>
+                  <select name="Size" id="size-DMSM" class="size-select">
                     <option value="Select Size">Select Size</option>
                     <option value="11">11</option>
                   </select>
@@ -266,7 +255,7 @@
             </div>
             <div class="col-lg-3 imgDiv nike jordan image-container yellow black multi men">
                 <h1 class="shoe-title">Jordan 4 Tour Yellow</h1>
-                <img class="shop-img img-different" src="images/aj4TY.jpg" alt="">
+                <img class="shop-img img-different" src="images/aj4ty.jpg" alt="">
                 <div style="display: inline-block; width: 90%;">
                   <button class="cart-btn" id="AJ4TY">Add to Cart</button>
                   <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$299.99</p>
@@ -278,7 +267,7 @@
             </div>
             <div class="col-lg-3 imgDiv nike jordan image-container grey blue multi men">
               <h1 class="shoe-title">Jordan 11 Cool Grey</h1>
-              <img class="shop-img img-different" src="images/AJ11CG.jpg" alt="">
+              <img class="shop-img img-different" src="images/aj11cg.jpg" alt="">
               <div style="display: inline-block; width: 90%;">
                 <button class="cart-btn" id="AJ11CG">Add to Cart</button>
                 <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$379.99</p>
@@ -288,36 +277,12 @@
                 </select>
               </div>
             </div>
-            <div class="col-lg-3 imgDiv nike jordan image-container brown pink white multi men">
-              <h1 class="shoe-title">Jordan 1 Low Mocha</h1>
-              <img class="shop-img img-different" src="images/AJ1LowM.jpg" alt="">
-              <div style="display: inline-block; width: 90%;">
-                <button class="cart-btn" id="AJ1LowM">Add to Cart</button>
-                <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$169.99</p>
-                <select name="Size" id="size-AJ1LowM" class="size-select">
-                  <option value="Select Size">Select Size</option>
-                  <option value="13">13</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-lg-3 imgDiv newbalance image-container brown green multi men">
-              <h1 class="shoe-title">Aime Leon Dore New Balance 993</h1>
-              <img class="shop-img img-different" src="images/ALDNB993.jpg" alt="">
-              <div style="display: inline-block; width: 90%;">
-                <button class="cart-btn" id="ALDNB993">Add to Cart</button>
-                <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$339.99</p>
-                <select name="Size" id="size-ALDNB993" class="size-select">
-                  <option value="Select Size">Select Size</option>
-                  <option value="11">11</option>
-                </select>
-              </div>
-            </div>
             <div class="col-lg-3 imgDiv nike jordan image-container brown pink green black orange multi men">
-              <h1 class="shoe-title">Jordan 1 High Tokyo Biohack</h1>
-              <img class="shop-img img-different" src="images/AJ1TBH.jpg" alt="">
+              <h1 class="shoe-title">Jordan 1 Low OG Starfish</h1>
+              <img class="shop-img img-different" src="images/aj1LowS.jpg" alt="">
               <div style="display: inline-block; width: 90%;">
                 <button class="cart-btn" id="AJ1TBH">Add to Cart</button>
-                <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$299.99</p>
+                <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$199.99</p>
                 <select name="Size" id="size-AJ1TBH" class="size-select">
                   <option value="Select Size">Select Size</option>
                   <option value="11">11</option>
@@ -326,7 +291,7 @@
             </div>
             <div class="col-lg-3 imgDiv nike jordan image-container maroon black multi men">
               <h1 class="shoe-title">Jordan 1 High Bordaeux</h1>
-              <img class="shop-img img-different" src="images/AJ1B.jpg" alt="">
+              <img class="shop-img img-different" src="images/aj1BD.jpg" alt="">
               <div style="display: inline-block; width: 90%;">
                 <button class="cart-btn" id="AJ1B">Add to Cart</button>
                 <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$219.99</p>
@@ -338,7 +303,7 @@
             </div>
             <div class="col-lg-3 imgDiv nike jordan image-container white maroon multi men">
               <h1 class="shoe-title">A Ma Maniere Jordan 1 High</h1>
-              <img class="shop-img img-different" src="images/AMMJ1.jpg" alt="">
+              <img class="shop-img img-different" src="images/aj1amm.jpg" alt="">
               <div style="display: inline-block; width: 90%;">
                 <button class="cart-btn" id="AMMJ1">Add to Cart</button>
                 <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$499.99</p>
@@ -350,25 +315,13 @@
             </div>
             <div class="col-lg-3 imgDiv nike image-container black white multi woman">
               <h1 class="shoe-title">Dunk High Black White</h1>
-              <img class="shop-img img-different" src="images/DHBW.jpg" alt="">
+              <img class="shop-img img-different" src="images/dhbw.jpg" alt="">
               <div style="display: inline-block; width: 90%;">
                 <button class="cart-btn" id="DHBW">Add to Cart</button>
                 <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$169.99</p>
                 <select name="Size" id="size-DHBW" class="size-select">
                   <option value="Select Size">Select Size</option>
                   <option value="8W">8W</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-lg-3 imgDiv nike image-container black maroon multi men">
-              <h1 class="shoe-title">Air Max 1 X Patta Rush Maroon</h1>
-              <img class="shop-img img-different" src="images/AM1P.jpg" alt="">
-              <div style="display: inline-block; width: 90%;">
-                <button class="cart-btn" id="AMP">Add to Cart</button>
-                <p class="shop-price" style="font-size: 1rem; float: right; margin-top: 15px; top: 50%; color: #091353;">$259.99</p>
-                <select name="Size" id="size-AMP" class="size-select">
-                  <option value="Select Size">Select Size</option>
-                  <option value="13">13</option>
                 </select>
               </div>
             </div>
@@ -379,7 +332,7 @@
           <div class="bottom-container">
             <div class="links-home">
               <a class="footer-link " href="#"><i class="fab fa-instagram-square"></i></a>
-              <a class="footer-link " href="#"><i class="fab fa-github-square"></i></a>
+              <a class="footer-link " href="contactUs.html"><i class="fas fa-address-card"></i></a>
               <a class="footer-link " href="#"><i class="fab fa-twitter-square"></i></a>
               <a class="footer-link " href="#"><i class="fab fa-facebook-square"></i></a>
             </div>

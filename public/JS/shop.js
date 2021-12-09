@@ -1,5 +1,19 @@
 //Used for index.html
 if(document.URL.includes('index.html')) {
+  window.addEventListener('load', changeDivWidth2)
+  window.addEventListener('resize', changeDivWidth2)
+
+  var sideNavigation2 = document.getElementById('cart')
+  function changeDivWidth2() {
+    console.log('worked')
+    var width = document.documentElement.clientWidth 
+    width = (8 / width) * 4000
+    var newWidth = parseInt(width).toString() + '%'
+    console.log(newWidth)
+    sideNavigation2.style.setProperty('--w', newWidth)
+
+  }
+
   window.addEventListener('load', changeWidth);
   window.addEventListener("resize", changeWidth);
 
@@ -83,14 +97,14 @@ cartButton.addEventListener('click', function() {
 function hideCart() {
   var cartContainer = document.getElementById('cart')
   cartContainer.style.display = 'none'
-  var shoeContainer = document.getElementById('shoes')
-  shoeContainer.style.width = '90%'
-  shoeContainer.style.float = ''
-  var bottomCont = document.getElementById('bottom-cont')
-  bottomCont.style.margin = 'auto'
-  var topCont = document.getElementById('top')
-  topCont.style.width = '100%'
-  topCont.style.float = ''
+  // var shoeContainer = document.getElementById('shoes')
+  // shoeContainer.style.width = '90%'
+  // shoeContainer.style.float = ''
+  // var bottomCont = document.getElementById('bottom-cont')
+  // bottomCont.style.margin = 'auto'
+  // var topCont = document.getElementById('top')
+  // topCont.style.width = '100%'
+  // topCont.style.float = ''
   var bagBtn = document.getElementById('cart-icon-btn')
   bagBtn.style.opacity = '1'
   isCart = false
@@ -100,14 +114,14 @@ function showCart() {
   var cartContainer = document.getElementById('cart')
   cartContainer.style.display = 'block'
   cartContainer.style.animationName = 'slideOut';
-  var shoeContainer = document.getElementById('shoes')
-  shoeContainer.style.width = '80%'
-  shoeContainer.style.float = 'left'
-  var bottomCont = document.getElementById('bottom-cont')
-  bottomCont.style.margin = '0'
-  var topCont = document.getElementById('top')
-  topCont.style.width = '80%'
-  topCont.style.float = 'left'
+  // var shoeContainer = document.getElementById('shoes')
+  // shoeContainer.style.width = '80%'
+  // shoeContainer.style.float = 'left'
+  // var bottomCont = document.getElementById('bottom-cont')
+  // bottomCont.style.margin = '0'
+  // var topCont = document.getElementById('top')
+  // topCont.style.width = '80%'
+  // topCont.style.float = 'left'
   var bagBtn = document.getElementById('cart-icon-btn')
   bagBtn.style.opacity = '0'
   isCart = true
@@ -180,12 +194,6 @@ button.addEventListener("click", function() {
     } else if(purchaseItems[i].innerText == 'Jordan 1 Low Team Red' && itemPrice[i].innerText == '$149.99') {
       cont = true
       total += 149.99
-    } else if(purchaseItems[i].innerText == 'Jordan 1 Low White Grey Black' && itemPrice[i].innerText == '$149.99') {
-      cont = true
-      total += 149.99
-    } else if(purchaseItems[i].innerText == 'Blazer Low X Sacai British Tan' && itemPrice[i].innerText == '$139.99') {
-      cont = true
-      total += 139.99
     } else if(purchaseItems[i].innerText == 'Aime Leon Dore New Balance 550 Oxford Grey' && itemPrice[i].innerText == '$219.99') {
       cont = true
       total += 219.99
@@ -195,12 +203,6 @@ button.addEventListener("click", function() {
     } else if(purchaseItems[i].innerText == 'Dunk Mid X Social Status Strawberry Milk' && itemPrice[i].innerText == '$219.99') {
       cont = true
       total += 219.99
-    } else if(purchaseItems[i].innerText == 'Nike X Undefeated Air Force 1' && itemPrice[i].innerText == '$139.99') {
-      cont = true
-      total += 139.99
-    } else if(purchaseItems[i].innerText == 'Air Force 1 X Space Jam' && itemPrice[i].innerText == '$159.99') {
-      cont = true
-      total += 159.99
     } else if(purchaseItems[i].innerText == 'Jordan 4 Tour Yellow' && itemPrice[i].innerText == '$299.99') {
       cont = true
       total += 299.99
@@ -225,7 +227,13 @@ button.addEventListener("click", function() {
     }else if(purchaseItems[i].innerText == 'Dunk High Black White' && itemPrice[i].innerText == '$169.99') {
       cont = true
       total += 299.99
-    }else if(purchaseItems[i].innerText == 'Air Max 1 X Patta Rush Maroon' && itemPrice[i].innerText == '$259.99') {
+    }else if(purchaseItems[i].innerText == 'Jordan 1 Low OG Starfish' && itemPrice[i].innerText == '$199.99') {
+      cont = true
+      total += 299.99
+    } else if(purchaseItems[i].innerText == 'Dunk Low NY vs NY' && itemPrice[i].innerText == '$299.99') {
+      cont = true
+      total += 299.99
+    } else if(purchaseItems[i].innerText == 'Blazer Low X Sacai X Kaws Team Red' && itemPrice[i].innerText == '$189.99') {
       cont = true
       total += 299.99
     } else {
@@ -297,50 +305,65 @@ for(var l = 1; l <= sessionStorage.getItem('cartItems'); l++) {
   cartContainerItems.innerHTML = newString + '<i class="fas fa-shopping-bag"></i>'
   
 }
-// for(var l = 1; l <= sessionStorage.getItem('cartItems'); l++) {
-//   var total2 = sessionStorage.getItem('total')
-//   var totalAmount = document.getElementById("total")
-//   totalAmount.innerText = "$" + total2
-//   itemsInCart = sessionStorage.getItem('cartItems')
-//   var cartRow = document.createElement("div")
-//   var cartItems = document.getElementsByClassName("cart-items")[0]
-//   var key = 'cart' + (l+incrementer).toString()
-//   var num = l+incrementer
-
-//   if(sessionStorage.getItem(key) == null) {
-//     if(l == 1) {
-//       key = 'cart2'
-//       incrementer++
-//       var cartRowContents = sessionStorage.getItem(key)
-//     }
-//     while(sessionStorage.getItem(key) == null) {
-//       key = 'cart' + (num+1).toString()
-//       console.log(l)
-//       console.log(num)
-//       console.log(key)
-//       incrementer++
-//       num++
-//       var cartRowContents = sessionStorage.getItem(key)
-//     }
-//   } else {
-//     key = 'cart' + (num).toString()
-//     var cartRowContents = sessionStorage.getItem(key)
-//   }
-//   cartRow.innerHTML = cartRowContents
-//   cartItems.append(cartRow)
-//   var replaceValue2 = itemsInCart
-//   var newString;
-//   newString = cartContainerItems.innerText.replace('0', replaceValue2.toString())
-//   cartContainerItems.innerHTML = newString + '<i class="fas fa-shopping-bag"></i>'
-// }
-
 
 
 
 //-----------------------------------
+
+
+window.addEventListener('load', changeDivWidth)
+window.addEventListener('resize', changeDivWidth)
+
+var sideNavigation = document.getElementById('side-nav-id')
+function changeDivWidth() {
+  console.log('worked')
+  var width = document.documentElement.clientWidth 
+  width = (8 / width) * 2000
+  var newWidth = parseInt(width).toString() + '%'
+  console.log(newWidth)
+  sideNavigation.style.setProperty('--w', newWidth)
+
+}
+
+window.addEventListener('load', changeDivWidth2)
+window.addEventListener('resize', changeDivWidth2)
+
+var sideNavigation2 = document.getElementById('cart')
+function changeDivWidth2() {
+  console.log('worked')
+  var width = document.documentElement.clientWidth 
+  width = (8 / width) * 4000
+  var newWidth = parseInt(width).toString() + '%'
+  console.log(newWidth)
+  sideNavigation2.style.setProperty('--w', newWidth)
+
+}
+
 var windowWidth1 = document.documentElement.clientWidth
 var currentItems;
+var clicks = 1
 
+var showFilter = document.getElementsByClassName('fltr-btn')[0]
+var filterContainer = document.getElementById('side-nav-id')
+var closeBtn = document.getElementById('close-btn2')
+closeBtn.addEventListener('click', function() {
+  filterContainer.style.display = 'none'
+  showFilter.style.display = 'block'
+  clicks++
+})
+showFilter.addEventListener('click', function () {
+  if(clicks % 2 != 0) {
+    filterContainer.style.display = 'block'
+    showFilter.style.display = 'none'
+    filterContainer.style.animationName = 'slideOut'
+    scrollToTop()
+  } else {
+    filterContainer.style.display = 'none'
+    showFilter.style.display = 'block'
+
+  }
+  clicks++
+})
 var isCart = false
 if(document.readyState == 'loading') {
   hideCart()
@@ -364,8 +387,8 @@ cartButton.addEventListener('click', function() {
 function hideCart() {
   var cartContainer = document.getElementById('cart')
   cartContainer.style.display = 'none'
-  var shoeContainer = document.getElementById('shoes')
-  shoeContainer.style.width = '90%'
+  // var shoeContainer = document.getElementById('shoes')
+  // shoeContainer.style.width = '90%'
   var bagBtn = document.getElementById('cart-icon-btn')
   bagBtn.style.opacity = '1'
   getHeight()
@@ -377,8 +400,8 @@ function showCart() {
   var cartContainer = document.getElementById('cart')
   cartContainer.style.display = 'block'
   cartContainer.style.animationName = 'slideOut';
-  var shoeContainer = document.getElementById('shoes')
-  shoeContainer.style.width = '70%'
+  // var shoeContainer = document.getElementById('shoes')
+  // shoeContainer.style.width = '70%'
   var bagBtn = document.getElementById('cart-icon-btn')
   bagBtn.style.opacity = '0'
   getHeight()
@@ -833,12 +856,6 @@ button.addEventListener("click", function() {
     } else if(purchaseItems[i].innerText == 'Jordan 1 Low Team Red' && itemPrice[i].innerText == '$149.99') {
       cont = true
       total += 149.99
-    } else if(purchaseItems[i].innerText == 'Jordan 1 Low White Grey Black' && itemPrice[i].innerText == '$149.99') {
-      cont = true
-      total += 149.99
-    } else if(purchaseItems[i].innerText == 'Blazer Low X Sacai British Tan' && itemPrice[i].innerText == '$139.99') {
-      cont = true
-      total += 139.99
     } else if(purchaseItems[i].innerText == 'Aime Leon Dore New Balance 550 Oxford Grey' && itemPrice[i].innerText == '$219.99') {
       cont = true
       total += 219.99
@@ -848,12 +865,6 @@ button.addEventListener("click", function() {
     } else if(purchaseItems[i].innerText == 'Dunk Mid X Social Status Strawberry Milk' && itemPrice[i].innerText == '$219.99') {
       cont = true
       total += 219.99
-    } else if(purchaseItems[i].innerText == 'Nike X Undefeated Air Force 1' && itemPrice[i].innerText == '$139.99') {
-      cont = true
-      total += 139.99
-    } else if(purchaseItems[i].innerText == 'Air Force 1 X Space Jam' && itemPrice[i].innerText == '$159.99') {
-      cont = true
-      total += 159.99
     } else if(purchaseItems[i].innerText == 'Jordan 4 Tour Yellow' && itemPrice[i].innerText == '$299.99') {
       cont = true
       total += 299.99
@@ -878,7 +889,13 @@ button.addEventListener("click", function() {
     }else if(purchaseItems[i].innerText == 'Dunk High Black White' && itemPrice[i].innerText == '$169.99') {
       cont = true
       total += 299.99
-    }else if(purchaseItems[i].innerText == 'Air Max 1 X Patta Rush Maroon' && itemPrice[i].innerText == '$259.99') {
+    }else if(purchaseItems[i].innerText == 'Jordan 1 Low OG Starfish' && itemPrice[i].innerText == '$199.99') {
+      cont = true
+      total += 299.99
+    } else if(purchaseItems[i].innerText == 'Dunk Low NY vs NY' && itemPrice[i].innerText == '$299.99') {
+      cont = true
+      total += 299.99
+    } else if(purchaseItems[i].innerText == 'Blazer Low X Sacai X Kaws Team Red' && itemPrice[i].innerText == '$189.99') {
       cont = true
       total += 299.99
     } else {
@@ -925,4 +942,17 @@ button.addEventListener("click", function() {
   
 })
 sessionStorage.setItem('style', '')
+var k = 0;
+var txt = 'Find Your Pair';
+var speed = 50;
+
+function typeWriter() {
+  if (k < txt.length) {
+    document.getElementById("title").innerHTML += txt.charAt(k);
+    k++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+document.addEventListener('load', typeWriter())
 }
