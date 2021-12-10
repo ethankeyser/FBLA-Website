@@ -26,3 +26,19 @@ function getHeight() {
   
   window.addEventListener('load', getHeight);
   window.addEventListener("resize", getHeight);
+
+  function getHeightPicture() {
+    var heightElement = document.getElementById("example");
+    var height = heightElement.offsetHeight;
+    console.log(height);
+    var shoeTitles = document.getElementsByClassName("img-different");
+    for(var i = 0; i < shoeTitles.length; i++) {
+        if(i != 1) {
+            shoeTitles.item(i).style.height = height;
+            console.log("worked");
+        }
+    }
+  }
+  
+  window.addEventListener('load', getHeightPicture);
+  window.addEventListener("resize", getHeightPicture);

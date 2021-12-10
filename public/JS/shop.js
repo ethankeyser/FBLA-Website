@@ -1,5 +1,21 @@
 //Used for index.html
 if(document.URL.includes('index.html')) {
+  window.addEventListener('load', getHeightPicture)
+  window.addEventListener('resize', getHeightPicture)
+
+  function getHeightPicture() {
+    var heightElementImg = document.getElementById("imgHeightModel");
+    var heightImg = heightElementImg.offsetHeight;
+    console.log(heightImg);
+    var imgTitles = document.getElementsByClassName("shop-pics");
+    for(var i = 0; i < imgTitles.length; i++) {
+      if(i != 1) {
+        imgTitles.item(i).style.height = heightImg;
+        console.log("worked");
+      }
+    }
+  }
+
   window.addEventListener('load', changeDivWidth2)
   window.addEventListener('resize', changeDivWidth2)
 
@@ -7,7 +23,7 @@ if(document.URL.includes('index.html')) {
   function changeDivWidth2() {
     console.log('worked')
     var width = document.documentElement.clientWidth 
-    width = (8 / width) * 4000
+    width = (8 / width) * 5000
     var newWidth = parseInt(width).toString() + '%'
     console.log(newWidth)
     sideNavigation2.style.setProperty('--w', newWidth)
@@ -194,7 +210,7 @@ button.addEventListener("click", function() {
     } else if(purchaseItems[i].innerText == 'Jordan 1 Low Team Red' && itemPrice[i].innerText == '$149.99') {
       cont = true
       total += 149.99
-    } else if(purchaseItems[i].innerText == 'Aime Leon Dore New Balance 550 Oxford Grey' && itemPrice[i].innerText == '$219.99') {
+    } else if(purchaseItems[i].innerText == 'Off-White Dunk Low University Red' && itemPrice[i].innerText == '$799.99') {
       cont = true
       total += 219.99
     } else if(purchaseItems[i].innerText == 'Yeezy Boost 350 V2 Mx Oat' && itemPrice[i].innerText == '$289.99') {
@@ -233,7 +249,7 @@ button.addEventListener("click", function() {
     } else if(purchaseItems[i].innerText == 'Dunk Low NY vs NY' && itemPrice[i].innerText == '$299.99') {
       cont = true
       total += 299.99
-    } else if(purchaseItems[i].innerText == 'Blazer Low X Sacai X Kaws Team Red' && itemPrice[i].innerText == '$189.99') {
+    } else if(purchaseItems[i].innerText == 'Nike X Sacai LDWaffle' && itemPrice[i].innerText == '$499.99') {
       cont = true
       total += 299.99
     } else {
@@ -332,7 +348,7 @@ var sideNavigation2 = document.getElementById('cart')
 function changeDivWidth2() {
   console.log('worked')
   var width = document.documentElement.clientWidth 
-  width = (8 / width) * 4000
+  width = (8 / width) * 5000
   var newWidth = parseInt(width).toString() + '%'
   console.log(newWidth)
   sideNavigation2.style.setProperty('--w', newWidth)
@@ -805,10 +821,15 @@ function getHeightPicture() {
   var heightImg = heightElementImg.offsetHeight;
   console.log(heightImg);
   var imgTitles = document.getElementsByClassName("img-different");
-  for(var i = 0; i < imgTitles.length; i++) {
-    imgTitles.item(i).style.height = heightImg;
-    console.log("worked");
+  var parentEle = document.getElementById('exDiv')
+  console.log(parentEle.style.display)
+  if(parentEle.style.display != '') {
+    for(var i = 0; i < imgTitles.length; i++) {
+      imgTitles.item(i).style.height = heightImg;
+      console.log("worked");
+    }
   }
+
 }
 
 window.addEventListener('load', getHeightPicture);
@@ -856,7 +877,7 @@ button.addEventListener("click", function() {
     } else if(purchaseItems[i].innerText == 'Jordan 1 Low Team Red' && itemPrice[i].innerText == '$149.99') {
       cont = true
       total += 149.99
-    } else if(purchaseItems[i].innerText == 'Aime Leon Dore New Balance 550 Oxford Grey' && itemPrice[i].innerText == '$219.99') {
+    } else if(purchaseItems[i].innerText == 'Off-White Dunk Low University Red' && itemPrice[i].innerText == '$799.99') {
       cont = true
       total += 219.99
     } else if(purchaseItems[i].innerText == 'Yeezy Boost 350 V2 Mx Oat' && itemPrice[i].innerText == '$289.99') {
@@ -895,7 +916,7 @@ button.addEventListener("click", function() {
     } else if(purchaseItems[i].innerText == 'Dunk Low NY vs NY' && itemPrice[i].innerText == '$299.99') {
       cont = true
       total += 299.99
-    } else if(purchaseItems[i].innerText == 'Blazer Low X Sacai X Kaws Team Red' && itemPrice[i].innerText == '$189.99') {
+    } else if(purchaseItems[i].innerText == 'Nike X Sacai LDWaffle' && itemPrice[i].innerText == '$499.99') {
       cont = true
       total += 299.99
     } else {
