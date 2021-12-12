@@ -259,7 +259,6 @@ button.addEventListener("click", function() {
   }
   if(cont) {
     var items = document.getElementsByClassName("item-container")
-    button.addEventListener("click", () => {
       var regex  = /^\d+(?:\.\d{0,2})$/;
       var numStr = total;
       var total2 = total*100
@@ -289,7 +288,6 @@ button.addEventListener("click", function() {
       } else {
         alert("Please enter a valid dollar amount to submit a custom donation")
       }
-  })
 
   }
   
@@ -822,10 +820,11 @@ function getHeightPicture() {
   console.log(heightImg);
   var imgTitles = document.getElementsByClassName("img-different");
   var parentEle = document.getElementById('exDiv')
-  console.log(parentEle.style.display)
-  if(parentEle.style.display != '') {
+  console.log(parentEle.style.height)
+  if(window.getComputedStyle(parentEle).display != "none") {
     for(var i = 0; i < imgTitles.length; i++) {
       imgTitles.item(i).style.height = heightImg;
+      console.log(imgTitles.item(i))
       console.log("worked");
     }
   }
@@ -861,6 +860,7 @@ window.addEventListener("resize", getHeightPicture);
 var button = document.getElementById("cont-to-checkout")
 var cont = true
 button.addEventListener("click", function() {
+  console.log('clicked')
   var purchaseItems = document.getElementsByClassName('shoe-name')
   var itemPrice = document.getElementsByClassName('price')
   var total = 0
@@ -924,9 +924,9 @@ button.addEventListener("click", function() {
       alert('Price was changed! Please refresh your page and try again.')
     }
   }
+  console.log(cont.toString())
   if(cont) {
     var items = document.getElementsByClassName("item-container")
-    button.addEventListener("click", () => {
       var regex  = /^\d+(?:\.\d{0,2})$/;
       var numStr = total;
       var total2 = total*100
@@ -956,7 +956,6 @@ button.addEventListener("click", function() {
       } else {
         alert("Please enter a valid dollar amount to submit a custom donation")
       }
-  })
 
   }
   
